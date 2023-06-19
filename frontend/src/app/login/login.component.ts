@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  constructor(private userService : UserService){
+  constructor(private userService : UserService, private router : Router){
     this.loginForm = new FormGroup({
       username: new FormControl(''),
       password: new FormControl('')
@@ -47,6 +48,15 @@ export class LoginComponent implements OnInit{
       // Handle invalid credentials or other scenarios
     }
 
+    //routing to either the home-announcements-component or the select-company component based on admin or worker properties in user:
+
+    if (this.userService.isWorker) {
+      // Navigate to the home-announcements component for workers
+      this.router.navigate(['/home-announcements']);
+    } else {
+      // Navigate to the select-company component for admins
+      this.router.navigate(['/select-company']);
+    }
   }
 
 
