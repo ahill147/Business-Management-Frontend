@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
+  menuOpen = false;
 
+  toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+      console.log("CLICKED")
+  }
 }

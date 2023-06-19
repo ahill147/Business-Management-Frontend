@@ -10,6 +10,11 @@ import { HomeAnnouncementsComponent } from './home-announcements/home-announceme
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+
+
 
 @NgModule({
   declarations: [
@@ -22,9 +27,12 @@ import { UserService } from './user.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   providers: [UserService],
-  bootstrap: [AppComponent, UserService]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

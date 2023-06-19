@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SelectCompanyComponent } from './select-company/select-company.component';
 import { HomeAnnouncementsComponent } from './home-announcements/home-announcements.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'select-company', component: SelectCompanyComponent },
   { path: 'announcements', component: HomeAnnouncementsComponent },
+  { path: 'nav', component: NavMenuComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
