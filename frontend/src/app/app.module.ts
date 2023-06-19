@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { SelectCompanyComponent } from './select-company/select-company.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeAnnouncementsComponent } from './home-announcements/home-announcements.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './user.service';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +21,10 @@ import { HomeAnnouncementsComponent } from './home-announcements/home-announceme
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [UserService],
+  bootstrap: [AppComponent, UserService]
 })
 export class AppModule { }

@@ -1,1 +1,8 @@
-<p>select-company works!</p>
+<form [formGroup]="selectCompanyForm" (ngSubmit)="onSubmit()">
+    <select formControlName = "selectCompany">
+        <option value = "fedex">FedEx</option>
+        <option value = "cooksys">CookSys</option>
+        <option value = "google">Google</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
