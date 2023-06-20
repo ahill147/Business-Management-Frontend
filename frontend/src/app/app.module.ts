@@ -11,6 +11,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
 import { UsersRegComponent } from './users-reg/users-reg.component';
 import { AddUserComponent } from './users-reg/add-user/add-user.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProjectsDisplayComponent } from './projects-display/projects-display.component';
+
 
 
 @NgModule({
@@ -21,12 +24,14 @@ import { AddUserComponent } from './users-reg/add-user/add-user.component';
     NavMenuComponent,
     HomeAnnouncementsComponent,
     UsersRegComponent,
-    AddUserComponent
+    AddUserComponent,
+    ProjectsDisplayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
