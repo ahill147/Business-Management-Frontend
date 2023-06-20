@@ -9,6 +9,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeAnnouncementsComponent } from './home-announcements/home-announcements.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ProjectsDisplayComponent } from './projects-display/projects-display.component';
+
 
 
 @NgModule({
@@ -17,12 +20,14 @@ import { UserService } from './user.service';
     LoginComponent,
     SelectCompanyComponent,
     NavMenuComponent,
-    HomeAnnouncementsComponent
+    HomeAnnouncementsComponent,
+    ProjectsDisplayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent, UserService]
