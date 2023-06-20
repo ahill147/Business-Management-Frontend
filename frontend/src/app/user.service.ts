@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
 
@@ -39,6 +39,10 @@ interface FullUserDto {
     teams: [any]
 }
 
+const userUrl = 'http://localhost:3000/placeholder';
+
+const userUrl = 'http://localhost:3000/placeholder';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -71,4 +75,10 @@ export class UserService {
     return this.fullUser
   }
   
+  async getAllUsers() {
+    let data = await this.http.get(userUrl);
+    console.log(data);
+    return data;
+  }
 }
+
