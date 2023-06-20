@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  templateUrl: './projects-display.component.html',
+  styleUrls: ['./projects-display.component.css']
 })
 export class ProjectsDisplayComponent {
 
