@@ -13,6 +13,7 @@ import { UsersRegComponent } from './users-reg/users-reg.component';
 import { AddUserComponent } from './users-reg/add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectsDisplayComponent } from './projects-display/projects-display.component';
+import { ProjectListItemComponent } from './projects-display/project-list-item/project-list-item.component';
 
 
 
@@ -25,7 +26,8 @@ import { ProjectsDisplayComponent } from './projects-display/projects-display.co
     HomeAnnouncementsComponent,
     UsersRegComponent,
     AddUserComponent,
-    ProjectsDisplayComponent
+    ProjectsDisplayComponent,
+    ProjectListItemComponent
   ],
   imports: [
     BrowserModule,
