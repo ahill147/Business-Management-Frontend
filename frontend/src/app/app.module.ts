@@ -13,11 +13,8 @@ import { UsersRegComponent } from './users-reg/users-reg.component';
 import { AddUserComponent } from './users-reg/add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectsDisplayComponent } from './projects-display/projects-display.component';
-
-
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
+
 
 
 
@@ -36,13 +33,10 @@ import { MatMenuModule } from '@angular/material/menu';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
   bootstrap: [AppComponent]
 })
 export class AppModule { }
