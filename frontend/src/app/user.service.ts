@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+const userUrl = 'http://localhost:3000/placeholder';
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +15,11 @@ export class UserService {
   isAdmin: boolean | undefined;
   company: string | undefined;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  async getAllUsers() {
+    let data = await this.http.get(userUrl);
+    console.log(data);
+    return data;
+  }
 }

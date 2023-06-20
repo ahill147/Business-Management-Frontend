@@ -1,0 +1,32 @@
+<div class="form-container">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="first-last-form">
+            <input type="text" id="firstName" formControlName="firstName" required placeholder="first name">
+            <input type="text" id="lastName" formControlName="lastName" required placeholder="last name">
+        </div>
+        <div class="email-form">
+            <input type="email" id="email" formControlName="email" required placeholder="email">
+        </div>
+        <div class="password-form">
+            <input type="password" id="password" formControlName="password" required placeholder="password">
+            <input type="password" id="confirmPassword" formControlName="confirmPassword" required placeholder="confirm password">
+        </div>
+        <div class="admin-form">
+            <p>
+                Make user an admin role?
+            </p>
+            <select class="admin-select" (change)="changeRole($event)" formControlName="adminRole">
+                <option value="">Pick an option</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+        <!-- <div class="invalid-feedback" *ngIf="isSubmitted && (firstName?.invalid || lastName?.invalid || email?.invalid || password? !== confirmPassword || adminRole?.invalid)">
+            <sup>*</sup>Please provide valid info
+        </div> -->
+        <br>
+        <br>
+        <br>
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+</div>
