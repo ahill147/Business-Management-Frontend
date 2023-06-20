@@ -1,16 +1,74 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
+
+
+interface CredentialsDto {
+  username: string;
+  password: string;
+}
+
+interface ProfileDto {
+  firstname: string,
+  lastname: string,
+  email:string,
+  phone: string
+}
+
+interface UserRequestDto {
+  credentials: CredentialsDto;
+  profile: ProfileDto;
+  isAdmin: boolean;
+}
+
+interface BasicUserDto{
+  id: number,
+  profile: ProfileDto,
+  isAdmin: boolean,
+  active: boolean,
+  status: string
+}
+
+interface FullUserDto {
+    id: number,
+    profile: ProfileDto,
+    isAdmin: boolean,
+    active: boolean,
+    status: string,
+    companies: [any],
+    teams: [any]
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
-  id: number | undefined;
-  username: string | undefined;
-  password: string | undefined;
-  isWorker: boolean | undefined;
-  isAdmin: boolean | undefined;
-  company: string | undefined;
+  credentials: CredentialsDto | undefined;
+  profile: ProfileDto | undefined;
+  userRequest: UserRequestDto | undefined;
+  basicUser: BasicUserDto | undefined;
+  fullUser: FullUserDto | undefined;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  login(username: string, password: string){
+    const credentialsDto = {
+      username,
+      password
+    }
+    return this.http.post<FullUserDto>('http://localhost:8080/users/login', credentialsDto)
+    .pipe(
+      tap((fullUser) => {
+        this.fullUser = fullUser; //saving our user in this service class
+      })
+    )
+    //should return a FullUserDto
+  }
+
+  getUser() : FullUserDto | undefined {
+    return this.fullUser
+  }
+  
 }

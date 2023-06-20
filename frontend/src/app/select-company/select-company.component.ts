@@ -25,7 +25,7 @@ export class SelectCompanyComponent implements OnInit{
     const selectedCompany = this.selectCompanyForm.get('selectCompany')?.value;
     // Handle the selected company and perform any necessary actions
     console.log('Selected company:', selectedCompany);
-    this.userService.company = selectedCompany;
+    this.userService.fullUser?.companies.includes(selectedCompany);
 
   }
 
