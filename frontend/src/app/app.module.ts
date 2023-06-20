@@ -14,6 +14,8 @@ import { AddUserComponent } from './users-reg/add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectsDisplayComponent } from './projects-display/projects-display.component';
 import { MatIconModule } from '@angular/material/icon';
+import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -27,14 +29,16 @@ import { MatIconModule } from '@angular/material/icon';
     HomeAnnouncementsComponent,
     UsersRegComponent,
     AddUserComponent,
-    ProjectsDisplayComponent
+    ProjectsDisplayComponent,
+    CreateAnnouncementComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

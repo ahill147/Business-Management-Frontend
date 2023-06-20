@@ -3,25 +3,25 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
 
-interface CredentialsDto {
+export interface CredentialsDto {
   username: string;
   password: string;
 }
 
-interface ProfileDto {
+export interface ProfileDto {
   firstname: string,
   lastname: string,
   email:string,
   phone: string
 }
 
-interface UserRequestDto {
+export interface UserRequestDto {
   credentials: CredentialsDto;
   profile: ProfileDto;
   isAdmin: boolean;
 }
 
-interface BasicUserDto{
+export interface BasicUserDto{
   id: number,
   profile: ProfileDto,
   isAdmin: boolean,
@@ -29,7 +29,7 @@ interface BasicUserDto{
   status: string
 }
 
-interface FullUserDto {
+export interface FullUserDto {
     id: number,
     profile: ProfileDto,
     isAdmin: boolean,
@@ -37,6 +37,14 @@ interface FullUserDto {
     status: string,
     companies: [any],
     teams: [any]
+}
+
+export interface CompanyDto {
+  id: number,
+  name: string,
+  description: string,
+  teams: [any],
+  users: [BasicUserDto]
 }
 
 const userUrl = 'http://localhost:3000/placeholder';
@@ -47,11 +55,13 @@ const userUrl = 'http://localhost:3000/placeholder';
 
 export class UserService {
 
-  credentials: CredentialsDto | undefined;
+  credentials!: CredentialsDto;
   profile: ProfileDto | undefined;
   userRequest: UserRequestDto | undefined;
   basicUser: BasicUserDto | undefined;
   fullUser: FullUserDto | undefined;
+
+  currentCompany!: CompanyDto; 
 
   constructor(private http: HttpClient) { }
 
@@ -64,6 +74,10 @@ export class UserService {
     .pipe(
       tap((fullUser) => {
         this.fullUser = fullUser; //saving our user in this service class
+        this.credentials = { //set our credentials
+          username,
+          password
+        }
       })
     )
     //should return a FullUserDto
