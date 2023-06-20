@@ -1,0 +1,30 @@
+<div class="header">
+    <h1>User Registry</h1>
+<p>A general view of all your members in your organization</p>
+</div>
+<div class="user-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Team</th>
+                <th>Active</th>
+                <th>Admin</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.team}}</td>
+                <td>{{user.active}}</td>
+                <td>{{user.admin}}</td>
+                <td>{{user.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br><br>
+<button class="user-button" (click)="onAddUser()">ADD USER</button>

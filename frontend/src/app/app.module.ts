@@ -9,6 +9,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeAnnouncementsComponent } from './home-announcements/home-announcements.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './user.service';
+import { UsersRegComponent } from './users-reg/users-reg.component';
+import { AddUserComponent } from './users-reg/add-user/add-user.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { UserService } from './user.service';
     LoginComponent,
     SelectCompanyComponent,
     NavMenuComponent,
-    HomeAnnouncementsComponent
+    HomeAnnouncementsComponent,
+    UsersRegComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +29,6 @@ import { UserService } from './user.service';
     ReactiveFormsModule
   ],
   providers: [UserService],
-  bootstrap: [AppComponent, UserService]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
