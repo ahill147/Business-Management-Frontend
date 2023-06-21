@@ -10,7 +10,7 @@
 .name-row {
   display: flex;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 25px;
 }
 
 .project-name {
@@ -34,10 +34,43 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.75);
   /* identical to box height, or 21px */
 
   display: flex;
   align-items: center;
   text-align: center;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.project-summary {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  /* or 24px */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.projects-edit button {
+  background-color: #DEB992;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 5px 30px;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
