@@ -16,6 +16,8 @@ import { ProjectsDisplayComponent } from './projects-display/projects-display.co
 import { ProjectListItemComponent } from './projects-display/project-list-item/project-list-item.component';
 
 import { MatIconModule } from '@angular/material/icon';
+import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,14 +29,16 @@ import { MatIconModule } from '@angular/material/icon';
     UsersRegComponent,
     AddUserComponent,
     ProjectsDisplayComponent,
+    CreateAnnouncementComponent,
     ProjectListItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatIconModule,
-    HttpClientModule
+    FormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

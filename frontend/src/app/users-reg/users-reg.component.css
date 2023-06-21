@@ -1,0 +1,53 @@
+.header {
+    color: #1BA098;
+    text-align: center;
+}
+
+.user-container {
+box-sizing: border-box;
+border: 1px solid #DEB992;
+border-spacing: 0;
+border-radius: 5px;
+margin: auto;
+position: relative;
+}
+
+.table-header {
+color: #ffffff;
+text-align: center;
+display: table-cell;
+box-sizing: inherit;
+}
+
+.user-data {
+border-top: 1px solid #DEB992;
+color: #DEB992;
+text-align: center;
+display: table-cell;
+box-sizing: inherit;
+}
+
+th, td {
+padding-top: 25px;
+padding-bottom: 25px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.user-button {
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #1BA098;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.error {
+    color: #bc0000;
+    padding-top: 1000px;
+}

@@ -1,32 +1,42 @@
-<div class="form-container">
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-        <div class="first-last-form">
-            <input type="text" id="firstName" formControlName="firstName" required placeholder="first name">
-            <input type="text" id="lastName" formControlName="lastName" required placeholder="last name">
+<div class="jw-modal">
+    <div class="jw-modal-body">
+        <div class="form-container">
+            <div class="close-button-container">
+                <img src="assets/closeIcon.png" alt="close button" class="close-image"/>
+                <button (click)="close()" class="close-button"></button>
+            </div>
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <div class="first-last-form">
+                    <input type="text" id="firstName" formControlName="firstName" required placeholder="first name" class="first-last-form">
+                    <input type="text" id="lastName" formControlName="lastName" required placeholder="last name">
+                </div>
+                <div class="email-form">
+                    <input style="width: 375px;" type="email" id="email" formControlName="email" required placeholder="email">
+                </div>
+                <div class="password-form">
+                    <input type="password" id="password" formControlName="password" required placeholder="password">
+                    <input type="password" id="confirmPassword" formControlName="confirmPassword" required placeholder="confirm password">
+                </div>
+                <div class="admin-form">
+                    <p style="color: #DEB992">
+                        Make user an admin role?
+                    </p>
+                    <select class="admin-select" (change)="changeRole($event)" formControlName="adminRole">
+                        <option value="">Pick an option</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </div>
+                <div *ngIf="isSubmitted && (firstName?.invalid || lastName?.invalid || email?.invalid || adminRole?.invalid)">
+                    <p style="color: #bc0000;">Some fields are missing inputs or have invalid inputs.</p>
+                </div>
+                <br>
+                <br>
+                <br>
+                <button type="submit" class="submit-button" (click)="onSubmit()">Submit</button>
+            </form>
         </div>
-        <div class="email-form">
-            <input type="email" id="email" formControlName="email" required placeholder="email">
-        </div>
-        <div class="password-form">
-            <input type="password" id="password" formControlName="password" required placeholder="password">
-            <input type="password" id="confirmPassword" formControlName="confirmPassword" required placeholder="confirm password">
-        </div>
-        <div class="admin-form">
-            <p>
-                Make user an admin role?
-            </p>
-            <select class="admin-select" (change)="changeRole($event)" formControlName="adminRole">
-                <option value="">Pick an option</option>
-                <option value="true">True</option>
-                <option value="false">False</option>
-            </select>
-        </div>
-        <!-- <div class="invalid-feedback" *ngIf="isSubmitted && (firstName?.invalid || lastName?.invalid || email?.invalid || password? !== confirmPassword || adminRole?.invalid)">
-            <sup>*</sup>Please provide valid info
-        </div> -->
-        <br>
-        <br>
-        <br>
-        <button type="submit" class="submit-button">Submit</button>
-    </form>
+    </div>
 </div>
+<div class="jw-modal-background"></div>
+
