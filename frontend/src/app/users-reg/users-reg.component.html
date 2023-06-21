@@ -2,29 +2,39 @@
     <h1>User Registry</h1>
 <p>A general view of all your members in your organization</p>
 </div>
-<div class="user-container">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Team</th>
-                <th>Active</th>
-                <th>Admin</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users">
-                <td>{{user.username}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.team}}</td>
-                <td>{{user.active}}</td>
-                <td>{{user.admin}}</td>
-                <td>{{user.status}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+
+<table class="user-container">
+    <thead>
+        <tr>
+            <div class="table-header">
+                <th style="width: 150px">Name</th>
+                <th style="width: 225px">Email</th>
+                <th style="width: 150px">Team</th>
+                <th style="width: 100px">Active</th>
+                <th style="width: 100px">Admin</th>
+                <th style="width: 100px">Status</th>
+            </div>
+        </tr>
+    </thead>
+    <tbody *ngIf="populated">
+        <tr *ngFor="let user of users">
+            <div class="user-data">
+                <td style="width: 150px">{{user.username}}</td>
+                <td style="width: 225px; text-decoration: underline;">{{user.email}}</td>
+                <td style="width: 150px">{{user.team}}</td>
+                <td style="width: 100px">{{user.active}}</td>
+                <td style="width: 100px">{{user.admin}}</td>
+                <td style="width: 100px; text-transform: uppercase;">{{user.status}}</td>
+            </div>
+        </tr>
+    </tbody>
+</table>
 <br><br>
-<button class="user-button" (click)="onAddUser()">ADD USER</button>
+<div class="button-container">
+    <button class="user-button" (click)="modalService.open('modal-1')">ADD USER</button>
+    <jw-modal id="modal-1">
+        <button (click)="modalService.close();">Close</button>
+    </jw-modal>
+</div>
+
+

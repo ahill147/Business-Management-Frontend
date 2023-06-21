@@ -16,6 +16,11 @@ import { ProjectsDisplayComponent } from './projects-display/projects-display.co
 import { ProjectListItemComponent } from './projects-display/project-list-item/project-list-item.component';
 
 import { MatIconModule } from '@angular/material/icon';
+import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { FormsModule } from '@angular/forms';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
+import { AnnouncementService } from './announcement.service';
+import { ModalService } from './modal.service';
 
 @NgModule({
   declarations: [
@@ -27,16 +32,19 @@ import { MatIconModule } from '@angular/material/icon';
     UsersRegComponent,
     AddUserComponent,
     ProjectsDisplayComponent,
+    CreateAnnouncementComponent,
     ProjectListItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatIconModule,
-    HttpClientModule
+    FormsModule,
+    SelectDropDownModule
   ],
-  providers: [UserService],
+  providers: [UserService, AnnouncementService, ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

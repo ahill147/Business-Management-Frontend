@@ -1,0 +1,46 @@
+@import '~typeface-mulish';
+
+.select-company-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #051622;
+    height: 100%;
+
+}
+
+h2 {
+    color: #1BA098;
+    font-family: 'Mulish';
+}
+
+button[type="submit"] {
+    background-color: #051622;
+    border: 2px solid #1BA098;
+    color: #fff;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding:  15px  50px 15px 50px ;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-top: 30px;
+  }
+
+  .select-element {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: #5533FF;
+    font-size: 12pt;
+  }
+
+ option {
+    /* Add your custom styles here */
+    color: #5533FF !important;
+    background-color: #f5f5f5 !important;
+    /* ... */
+  }

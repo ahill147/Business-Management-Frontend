@@ -42,7 +42,7 @@ export class ProjectsDisplayComponent implements OnInit{
     });
     // this.companyService.selectedCompany.subscribe((company) => {
     //   this.company = company;
-    //   this.companyId = company?.id ?? null;I n
+    //   this.companyId = company?.id ?? null;
     // });
     // this.user = this.userService.getUser();
     

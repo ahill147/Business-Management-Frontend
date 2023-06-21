@@ -1,11 +1,61 @@
 .announcement-header {
-    background-color: #2196f3;
-    color: #fff;
-    padding: 10px;
+    background-color: #051622;
+    height: 80px;
+    border-bottom: 2px solid #DEB992;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .button {
+    background-color: #0B2D45;
+    text-align: center;
+    padding-bottom: 7px;
+    width: 60px;
+    height: 60px;
+    color: white;
+    border: #0B2D45;
+    margin-right: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  #graphic {
+    width: 60px;
+    margin-left: 30px;
   }
   
   .fill-space {
     flex-grow: 1;
+  }
+  
+  .announcement-container {
+    background-color: #051622;
+    padding: 20px;
+    height: 100%;
+  }
+  
+  .announcement-item {
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  button.mat-button {
+    background-color: #051622;
+    color: white;
+    font-family: 'Mulish', sans-serif;
+    margin-top: 20px;
   }

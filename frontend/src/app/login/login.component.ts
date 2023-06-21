@@ -50,11 +50,12 @@ export class LoginComponent implements OnInit{
     this.userService.login(username, password).subscribe({
       next: (user: FullUserDto) => {
         if (user.isAdmin) {
-          // Navigate to the home-announcements component for admins
-          this.router.navigate(['/home-announcements']);
+          // Navigate to the select company = for admins
+          this.router.navigate(['/select-company']);
+
         } else {
           // Navigate to the select-company component for workers
-          this.router.navigate(['/select-company']);
+          this.router.navigate(['/announcements']);
         }
       },
       error: (error) => {

@@ -5,9 +5,11 @@ import { SelectCompanyComponent } from './select-company/select-company.componen
 import { HomeAnnouncementsComponent } from './home-announcements/home-announcements.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ProjectsDisplayComponent } from './projects-display/projects-display.component';
+import { UsersRegComponent } from './users-reg/users-reg.component';
+import { AddUserComponent } from './users-reg/add-user/add-user.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: UsersRegComponent },
   { path: 'select-company', component: SelectCompanyComponent },
   { path: 'announcements', component: HomeAnnouncementsComponent },
   { path: 'nav', component: NavMenuComponent },
