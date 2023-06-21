@@ -19,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { FormsModule } from '@angular/forms';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
+import { AnnouncementService } from './announcement.service';
+import { ModalService } from './modal.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { SelectDropDownModule } from 'ngx-select-dropdown';
     FormsModule,
     SelectDropDownModule
   ],
-  providers: [UserService],
+  providers: [UserService, AnnouncementService, ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

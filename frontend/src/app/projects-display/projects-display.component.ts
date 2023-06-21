@@ -40,11 +40,11 @@ export class ProjectsDisplayComponent implements OnInit{
     this.activatedRoute.queryParams.subscribe((params) => {
       this.teamId = Number(params['teamId']);
     });
-    this.companyService.selectedCompany.subscribe((company) => {
-      this.company = company;
-      this.companyId = company?.id ?? null;
-    });
-    this.user = this.userService.getUser();
+    // this.companyService.selectedCompany.subscribe((company) => {
+    //   this.company = company;
+    //   this.companyId = company?.id ?? null;
+    // });
+    // this.user = this.userService.getUser();
     
     const selectedTeam = this.company?.teams.find(
       (team) => team.id === this.teamId
