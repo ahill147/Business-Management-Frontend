@@ -11,7 +11,7 @@ export interface CredentialsDto {
 export interface ProfileDto {
   firstname: string,
   lastname: string,
-  email:string,
+  email: string,
   phone: string
 }
 
@@ -78,6 +78,7 @@ export class UserService {
           username,
           password
         }
+        console.log(this.fullUser)
       })
     )
     //should return a FullUserDto

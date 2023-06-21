@@ -11,14 +11,6 @@ export interface AnnouncementDto {
   author: BasicUserDto
 }
 
-interface AnnouncementRequestDto{
-
-  credentials: CredentialsDto,
-  title: string,
-  message: string,
-  companyId: number //may need to change this 
-}
-
 
 @Component({
   selector: 'app-home-announcements',
@@ -27,37 +19,42 @@ interface AnnouncementRequestDto{
 })
 export class HomeAnnouncementsComponent implements OnInit {
 
-  allAnnouncements : AnnouncementDto[] = [];
-  // announcementToPost : AnnouncementDto | undefined
-  currentUser : FullUserDto | undefined
+  allAnnouncements: AnnouncementDto[] = [];
+  currentUser: FullUserDto | undefined
 
-  constructor(private userService : UserService, private http: HttpClient, private announcementService : AnnouncementService){}
+  constructor(private userService: UserService, private http: HttpClient, private announcementService: AnnouncementService) { }
 
   ngOnInit(): void {
-    const companyId = this.userService.currentCompany.id //get the id programatically here
-    this.getAllAnnouncements(companyId);
+
     this.currentUser = this.userService.getUser();
-    
-    const announcement = this.announcementService.getAnnouncementToPost();
-    if (announcement) {
-      this.allAnnouncements.push(announcement);
+
+    //need to get announcements for each of the company ids and add them to our allAnnouncements array
+    if (this.currentUser?.companies) {
+      this.currentUser.companies.forEach((company: any) => {
+        this.getAllAnnouncements(company.id);
+      });
     }
 
+    //if the user posted a new announcement in create-announcement, it should be retrieved from the announcement service
+    const newAnnouncement = this.announcementService.getAnnouncementToPost();
+    if (newAnnouncement) {
+      this.allAnnouncements.push(newAnnouncement);
     }
-  
+  }
+
 
   getAllAnnouncements(companyId: number): void {
-    this.http.post<AnnouncementDto[]>('http://localhost:8080/company/' + companyId + '/announcements', {})
+    this.http.get<AnnouncementDto[]>('http://localhost:8080/company/' + companyId + '/announcements')
       .subscribe({
         next: (announcements: AnnouncementDto[]) => {
-          this.allAnnouncements = announcements;
+          this.allAnnouncements.concat(announcements); //adding all of the announcements to our announcements array
+          console.log(this.allAnnouncements)
+
         },
         error: (error) => {
           // Handle error
         }
       });
   }
-
-
 
 }
