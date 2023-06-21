@@ -58,7 +58,6 @@ export class HomeAnnouncementsComponent implements OnInit {
       });
   }
 
-  
 
 
 }

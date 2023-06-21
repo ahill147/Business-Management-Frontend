@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { FormsModule } from '@angular/forms';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
 
 
 
@@ -43,7 +44,8 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    SelectDropDownModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

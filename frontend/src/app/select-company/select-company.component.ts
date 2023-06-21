@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService, BasicUserDto } from '../user.service';
+import { Router } from '@angular/router';
 
 interface CompanyDto {
   id: number,
@@ -22,7 +23,7 @@ export class SelectCompanyComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  constructor(private userService: UserService){
+  constructor(private userService: UserService, private router: Router){
     this.selectCompanyForm = new FormGroup({
       selectCompany: new FormControl('') //initialize the default value with an empty string
     });
@@ -30,7 +31,6 @@ export class SelectCompanyComponent implements OnInit{
 
   onSubmit() {
     const selectedCompanyName = this.selectCompanyForm.get('selectCompany')?.value;
-
     //users have an array of CompanyDtos that they are assigned
     //i want to find the one that matches their selection
     const selectedCompany = this.userService.fullUser?.companies.find(
@@ -40,9 +40,8 @@ export class SelectCompanyComponent implements OnInit{
     if (selectedCompany) {
       this.userService.currentCompany = selectedCompany;
     }
+    //now our user should have a currentCompany assigned and we can route to home
+    this.router.navigate(['/announcements'])
 
-    //now our user should have a currentCompany assigned
   }
-
-
 }

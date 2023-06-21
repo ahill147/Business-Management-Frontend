@@ -1,8 +1,13 @@
+<div class = "select-company-container">
+<h2>Select Company</h2>
 <form [formGroup]="selectCompanyForm" (ngSubmit)="onSubmit()">
-    <select formControlName = "selectCompany">
+    <select class = "select-element" formControlName = "selectCompany">
+        <option disabled selected value="">Pick an Option</option>
         <option value = "fedex">FedEx</option>
         <option value = "cooksys">CookSys</option>
         <option value = "google">Google</option>
     </select>
-    <button type="submit">Submit</button>
   </form>
+  
+  <button type="submit" *ngIf="selectCompanyForm.get('selectCompany')?.value">Submit</button>
+</div>
