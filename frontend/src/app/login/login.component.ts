@@ -3,24 +3,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+// import { FullUserDto } from '../user.service';
+import { FullUserDto } from '../user.service';
 
 
-interface ProfileDto {
-  firstname: string,
-  lastname: string,
-  email:string,
-  phone: string
-}
-
-interface FullUserDto {
-  id: number,
-  profile: ProfileDto,
-  admin: boolean,
-  active: boolean,
-  status: string,
-  companies: [any],
-  teams: [any]
-}
 
 @Component({
   selector: 'app-login',
@@ -64,5 +50,4 @@ export class LoginComponent implements OnInit{
     });
   }
 }
-
 

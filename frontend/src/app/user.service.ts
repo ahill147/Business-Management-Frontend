@@ -36,16 +36,16 @@ export interface FullUserDto {
     admin: boolean,
     active: boolean,
     status: string,
-    companies: [any],
-    teams: [any]
+    companies: CompanyDto[],
+    teams: TeamDto[]
 }
 
 export interface CompanyDto {
   id: number,
   name: string,
   description: string,
-  teams: [TeamDto],
-  users: [BasicUserDto]
+  teams: TeamDto[],
+  users: BasicUserDto[]
 }
 
 const userUrl = 'http://localhost:3000/users';
