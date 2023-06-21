@@ -40,7 +40,7 @@ export class HomeAnnouncementsComponent implements OnInit {
             next: (announcements: AnnouncementDto[]) => {
               console.log("Announcement" + announcements);
               this.allAnnouncements = this.allAnnouncements.concat(announcements);
-              console.log("ALL ANNOUNCEMENTS", this.allAnnouncements);
+              console.log("ALL ANNOUNCEMENTS BEFORE NEW", this.allAnnouncements);
             },
             error: (error) => {
               // Handle error
@@ -62,8 +62,9 @@ export class HomeAnnouncementsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       // Handle any result or action after the dialog is closed
       if (result) {
-        console.log("RESULT FROM DIALOG (ANNOUNCEMENT)" + result)
+        // console.log("RESULT FROM DIALOG (ANNOUNCEMENT)" + result)
         this.allAnnouncements.push(result);
+        // console.log("ALL ANNOUNCEMENTS AFTER NEW" + this.allAnnouncements)
       }
     });
   }

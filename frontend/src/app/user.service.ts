@@ -80,6 +80,16 @@ export class UserService {
           password
         }
         console.log(this.fullUser)
+
+        this.basicUser = {
+          id: fullUser.id,
+          profile: fullUser.profile,
+          admin: fullUser.admin,
+          active: fullUser.active,
+          status: fullUser.status
+        };
+
+        console.log(this.basicUser)
       })
     )
     //should return a FullUserDto
@@ -87,6 +97,10 @@ export class UserService {
 
   getUser() : FullUserDto | undefined {
     return this.fullUser
+  }
+
+  getBasicUser() : BasicUserDto | undefined {
+    return this.basicUser
   }
   
   async getAllUsers() {

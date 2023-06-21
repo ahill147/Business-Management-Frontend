@@ -34,14 +34,15 @@ export class CreateAnnouncementComponent implements OnInit {
     //need to post to the API
     //this will return an announcementDTO that we will store in the service, but may not need to
     //should just update the data base with new announcement which will load on init
-
+    console.log("ON SUBMIT")
     const companyId : number = this.userService.currentCompany.id; //need to save the current company that the user is logged in as in the userService
 
-    if(this.userService.basicUser){ //if the user is not undefined
-      const currentUser : BasicUserDto = this.userService.basicUser
-      
-      this.postAnnouncement(currentUser, companyId) 
+    const currentUser = this.userService.getBasicUser();
+    console.log("CURRENT basic" + currentUser)
+    if (currentUser !== undefined) {
+      this.postAnnouncement(currentUser, companyId);
     }
+
     this.closeDialog();
     // this.router.navigate(['/announcements'])
 
@@ -56,11 +57,14 @@ export class CreateAnnouncementComponent implements OnInit {
       message: this.announcementMessage,
       companyId: this.userService.currentCompany.id
     };
+
+    console.log("ANNOUNCEMENT TO POST" + announcementToPost)
    
     this.http.post<AnnouncementDto>('http://localhost:8080/announcements/' + companyId, announcementToPost)
     .subscribe({
       next: (announcement: AnnouncementDto) => {
         this.announcementService.saveAnnouncement(announcement); //may not need to save the announcement in the service at all, but for now lets
+        console.log("POSTED ANNOUNCEMENT" + announcement)
         this.dialogRef.close(announcement); //pass the announcement argument as our result
       },
       error: (error) => {
