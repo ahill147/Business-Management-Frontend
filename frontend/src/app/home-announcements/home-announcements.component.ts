@@ -3,6 +3,8 @@ import { UserService, BasicUserDto, CredentialsDto, FullUserDto } from '../user.
 import { HttpClient } from '@angular/common/http';
 import { AnnouncementService } from '../announcement.service';
 import { Observable } from 'rxjs';
+import { CreateAnnouncementComponent } from '../create-announcement/create-announcement.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 export interface AnnouncementDto {
@@ -24,7 +26,7 @@ export class HomeAnnouncementsComponent implements OnInit {
   allAnnouncements: AnnouncementDto[] = [];
   currentUser: FullUserDto | undefined
 
-  constructor(private userService: UserService, private http: HttpClient, private announcementService: AnnouncementService) { }
+  constructor(private userService: UserService, private http: HttpClient, private announcementService: AnnouncementService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -47,17 +49,23 @@ export class HomeAnnouncementsComponent implements OnInit {
       });
     }
 
-    //if the user posted a new announcement in create-announcement, it should be retrieved from the announcement service
-    // const newAnnouncement = this.announcementService.getAnnouncementToPost(); //not necessary because we just add to the announcements for the company
-    // if (newAnnouncement) {
-    //   this.allAnnouncements.push(newAnnouncement);
-    // }
   }
 
 
   getAllAnnouncements(companyId: number): Observable<AnnouncementDto[]> {
     return this.http.get<AnnouncementDto[]>('http://localhost:8080/company/' + companyId + '/announcements');
   }
+
+  openCreateAnnouncementDialog(): void {
+    const dialogRef = this.dialog.open(CreateAnnouncementComponent);
   
+    dialogRef.afterClosed().subscribe(result => {
+      // Handle any result or action after the dialog is closed
+      if (result) {
+        console.log("RESULT FROM DIALOG (ANNOUNCEMENT)" + result)
+        this.allAnnouncements.push(result);
+      }
+    });
+  }
 
 }

@@ -21,6 +21,9 @@ import { FormsModule } from '@angular/forms';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { AnnouncementService } from './announcement.service';
 import { ModalService } from './modal.service';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { ModalService } from './modal.service';
     AddUserComponent,
     ProjectsDisplayComponent,
     CreateAnnouncementComponent,
-    ProjectListItemComponent
+    ProjectListItemComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { ModalService } from './modal.service';
     HttpClientModule,
     MatIconModule,
     FormsModule,
-    SelectDropDownModule
+    SelectDropDownModule,
+    OverlayModule,
+    MatDialogModule,
   ],
   providers: [UserService, AnnouncementService, ModalService],
   bootstrap: [AppComponent]

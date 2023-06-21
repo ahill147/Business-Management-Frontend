@@ -10,6 +10,6 @@
     <label for="message">Message:</label>
     <textarea id="message" [(ngModel)]="announcementMessage" name="message" required></textarea>
   </div>
-
   <button type="submit">Submit</button>
+  <button type="button" (click)="closeDialog()">Cancel</button>
 </form>

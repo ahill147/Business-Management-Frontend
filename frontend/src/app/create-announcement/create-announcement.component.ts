@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AnnouncementService } from '../announcement.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
+
 
 interface AnnouncementRequestDto {
   credentials: CredentialsDto,
@@ -26,11 +28,12 @@ export class CreateAnnouncementComponent implements OnInit {
  
   ngOnInit(): void {
   }
-  constructor(private userService: UserService, private announcementService: AnnouncementService, private http: HttpClient, private router: Router) { }
+  constructor(private userService: UserService, private announcementService: AnnouncementService, private http: HttpClient, private router: Router, private dialogRef: MatDialogRef<CreateAnnouncementComponent>) { }
 
   onSubmit() {
     //need to post to the API
-    //this will return an announcementDTO that we will store in the service
+    //this will return an announcementDTO that we will store in the service, but may not need to
+    //should just update the data base with new announcement which will load on init
 
     const companyId : number = this.userService.currentCompany.id; //need to save the current company that the user is logged in as in the userService
 
@@ -39,6 +42,9 @@ export class CreateAnnouncementComponent implements OnInit {
       
       this.postAnnouncement(currentUser, companyId) 
     }
+    this.closeDialog();
+    // this.router.navigate(['/announcements'])
+
   }
 
 
@@ -54,14 +60,16 @@ export class CreateAnnouncementComponent implements OnInit {
     this.http.post<AnnouncementDto>('http://localhost:8080/announcements/' + companyId, announcementToPost)
     .subscribe({
       next: (announcement: AnnouncementDto) => {
-        this.announcementService.saveAnnouncement(announcement); //then need to save the posted anouncement to our service so we can add it to our home/announcements page
-        this.router.navigate(['/home-announcements'])
+        this.announcementService.saveAnnouncement(announcement); //may not need to save the announcement in the service at all, but for now lets
+        this.dialogRef.close(announcement); //pass the announcement argument as our result
       },
       error: (error) => {
         // Handle error
       }
     });
-    
+  }
 
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }

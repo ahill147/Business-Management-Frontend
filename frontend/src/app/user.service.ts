@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
+import TeamDto from './interface-models/TeamDto';
 
 
 export interface CredentialsDto {
@@ -43,7 +44,7 @@ export interface CompanyDto {
   id: number,
   name: string,
   description: string,
-  teams: [any],
+  teams: [TeamDto],
   users: [BasicUserDto]
 }
 
