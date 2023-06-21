@@ -15,12 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProjectsDisplayComponent } from './projects-display/projects-display.component';
 import { ProjectListItemComponent } from './projects-display/project-list-item/project-list-item.component';
 
-
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-
-
 
 @NgModule({
   declarations: [
@@ -38,13 +33,10 @@ import { MatMenuModule } from '@angular/material/menu';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MatToolbarModule,
     MatIconModule,
-    MatMenuModule,,
     HttpClientModule
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
   bootstrap: [AppComponent]
 })
 export class AppModule { }

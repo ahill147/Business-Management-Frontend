@@ -41,8 +41,6 @@ interface FullUserDto {
 
 const userUrl = 'http://localhost:3000/placeholder';
 
-const userUrl = 'http://localhost:3000/placeholder';
-
 @Injectable({
   providedIn: 'root'
 })
