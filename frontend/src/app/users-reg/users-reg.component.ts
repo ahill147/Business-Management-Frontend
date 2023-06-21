@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-users-reg',
@@ -9,8 +10,9 @@ import { UserService } from '../user.service';
 export class UsersRegComponent {
 
   users: any;
+  populated: boolean = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, protected modalService: ModalService) {}
 
   ngOnInit(): void {
     this.populateUserTable();
@@ -20,14 +22,12 @@ export class UsersRegComponent {
     try {
       const response = await this.userService.getAllUsers()
       if (response) {
-        this.users = response;
+        this.users = response.users;
+        this.populated = true;
       }
     } catch (error) {
       console.log(error);
     }
   }
 
-  onAddUser() {
-    
-  }
 }

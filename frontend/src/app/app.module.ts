@@ -14,14 +14,10 @@ import { AddUserComponent } from './users-reg/add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectsDisplayComponent } from './projects-display/projects-display.component';
 import { ProjectListItemComponent } from './projects-display/project-list-item/project-list-item.component';
-
-
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { FormsModule } from '@angular/forms';
-
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 
 
 @NgModule({
