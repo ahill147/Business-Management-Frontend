@@ -10,6 +10,7 @@
     <div *ngFor="let announcement of allAnnouncements" class="announcement-item">
         <h3>{{ announcement.title }}</h3>
         <p>{{ announcement.message }}</p>
+        <p>{{ announcement.date }}</p>
         <p>Author: {{ announcement.author.profile.firstname }} {{ announcement.author.profile.lastname }}</p>
         <p>Date: {{ announcement.date }}</p>
     </div>

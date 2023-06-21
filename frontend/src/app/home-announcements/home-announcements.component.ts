@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService, BasicUserDto, CredentialsDto, FullUserDto } from '../user.service';
 import { HttpClient } from '@angular/common/http';
 import { AnnouncementService } from '../announcement.service';
+import { Observable } from 'rxjs';
+
 
 export interface AnnouncementDto {
   id: number,
@@ -31,7 +33,17 @@ export class HomeAnnouncementsComponent implements OnInit {
     //need to get announcements for each of the company ids and add them to our allAnnouncements array
     if (this.currentUser?.companies) {
       this.currentUser.companies.forEach((company: any) => {
-        this.getAllAnnouncements(company.id);
+        this.getAllAnnouncements(company.id)
+          .subscribe({
+            next: (announcements: AnnouncementDto[]) => {
+              console.log("Announcement" + announcements);
+              this.allAnnouncements = this.allAnnouncements.concat(announcements);
+              console.log("ALL ANNOUNCEMENTS", this.allAnnouncements);
+            },
+            error: (error) => {
+              // Handle error
+            }
+          });
       });
     }
 
@@ -43,18 +55,9 @@ export class HomeAnnouncementsComponent implements OnInit {
   }
 
 
-  getAllAnnouncements(companyId: number): void {
-    this.http.get<AnnouncementDto[]>('http://localhost:8080/company/' + companyId + '/announcements')
-      .subscribe({
-        next: (announcements: AnnouncementDto[]) => {
-          this.allAnnouncements.concat(announcements); //adding all of the announcements to our announcements array
-          console.log(this.allAnnouncements)
-
-        },
-        error: (error) => {
-          // Handle error
-        }
-      });
+  getAllAnnouncements(companyId: number): Observable<AnnouncementDto[]> {
+    return this.http.get<AnnouncementDto[]>('http://localhost:8080/company/' + companyId + '/announcements');
   }
+  
 
 }
