@@ -1,0 +1,107 @@
+/* MODAL STYLES
+-------------------------------*/
+jw-modal {
+    /* modals are hidden by default */
+    display: none;
+
+    .jw-modal {
+        /* modal container fixed across whole screen */
+        position: fixed;
+        inset: 0;
+
+        /* z-index must be higher than .jw-modal-background */
+        z-index: 1000;
+        
+        /* enables scrolling for tall modals */
+        padding: 40px;
+        overflow: auto;
+
+        .jw-modal-body {
+            width: 600px;
+            height: 500px;
+            padding: 20px;
+            background: #0B2D45;
+            text-align: center;
+            border-radius: 10px;
+            margin: auto;
+
+            /* margin exposes part of the modal background */
+            /* margin: 40px; */
+        }
+    }
+
+    .jw-modal-background {
+        /* modal background fixed across whole screen */
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        /* semi-transparent black  */
+        background-color: #000;
+        opacity: 0.75;
+        
+        /* z-index must be below .jw-modal and above everything else  */
+        z-index: 900;
+    }
+}
+
+body.jw-modal-open {
+    /* body overflow is hidden to hide main scrollbar when modal window is open */
+    overflow: hidden;
+}
+
+.form-container {
+    text-align: center;
+}
+
+.close-button-container {
+    height: 55px;
+    position: relative;
+    left: 260px;
+    bottom: 17px;
+}
+
+.close-image {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+}
+
+.close-button {
+    position: absolute;
+    background: none;
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+    border: none;
+}
+
+input {
+    color: #DEB992;
+    background: none;
+    border: none;
+    padding: 20px 20px;
+    margin-right: 10px;
+    border-bottom: 1px solid #DEB992;
+}
+
+.submit-button {
+    padding: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: #1BA098;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-select {
+    color:#005594;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

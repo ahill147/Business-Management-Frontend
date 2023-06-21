@@ -17,8 +17,6 @@ import { ProjectListItemComponent } from './projects-display/project-list-item/p
 import { MatIconModule } from '@angular/material/icon';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { FormsModule } from '@angular/forms';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
-
 
 @NgModule({
   declarations: [

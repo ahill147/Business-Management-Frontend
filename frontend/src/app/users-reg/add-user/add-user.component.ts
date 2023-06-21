@@ -4,7 +4,7 @@ import { ModalService } from 'src/app/modal.service';
 import { UserService } from 'src/app/user.service';
 
 @Component({
-  selector: 'app-add-user',
+  selector: 'jw-modal',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css'],
   encapsulation: ViewEncapsulation.None
@@ -36,6 +36,8 @@ export class AddUserComponent {
   }
 
   ngOnDestroy() {
+    this.isSubmitted = false;
+    this.userForm.reset();
     // remove self from modal service
     this.modalService.remove(this);
 
@@ -44,12 +46,16 @@ export class AddUserComponent {
   }
 
   open() {
+    this.adminRole?.setValue("");
     this.element.style.display = 'block';
     document.body.classList.add('jw-modal-open');
     this.isOpen = true;
   }
 
   close() {
+    this.isSubmitted = false;
+    this.userForm.reset();
+
     this.element.style.display = 'none';
     document.body.classList.remove('jw-modal-open');
     this.isOpen = false;
@@ -69,12 +75,28 @@ export class AddUserComponent {
       onlySelf: true,
     });
   }
+
+  get firstName() {
+    return this.userForm.get('firstName');
+  }
+  get lastName() {
+    return this.userForm.get('lastName');
+  }
+  get email() {
+    return this.userForm.get('email');
+  }
+  get password() {
+    return this.userForm.get('password');
+  }
+  get confirmPassword() {
+    return this.userForm.get('confirmPassword');
+  }
   get adminRole() {
     return this.userForm.get('adminRole');
   }
 
   onSubmit(): void {
-    console.log(this.userForm);
+
     this.isSubmitted = true;
     if(!this.userForm.valid) {
       false;
