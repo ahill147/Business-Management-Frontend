@@ -1,16 +1,28 @@
+@import '~typeface-mulish';
+
+
 h1, h3 {
     font-family: 'Mulish', sans-serif;
+    font-weight: 400;
   }
 
   h1 {
     font-size: 48px;
     color: #1BA098;
     margin-bottom: 0px;
+    margin-top: 0px;
   }
 
   h3 {
     font-size: 28px;
     color: #1BA098;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  #graphic {
+    width: 170px;
+    margin-bottom: 50px;
   }
 
   body {
@@ -68,7 +80,8 @@ h1, h3 {
     font-family: 'Mulish', sans-serif;
     font-size: 14px;
     text-transform: uppercase;
-    padding: 10px 20px;
+    padding:  15px  50px 15px 50px ;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 30px;
+    margin-top: 30px;
   }
