@@ -15,7 +15,7 @@ interface ProfileDto {
 interface FullUserDto {
   id: number,
   profile: ProfileDto,
-  isAdmin: boolean,
+  admin: boolean,
   active: boolean,
   status: string,
   companies: [any],
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit{
 
     this.userService.login(username, password).subscribe({
       next: (user: FullUserDto) => {
-        if (user.isAdmin) {
+        if (user.admin) {
           // Navigate to the select company = for admins
           this.router.navigate(['/select-company']);
 

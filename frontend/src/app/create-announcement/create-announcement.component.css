@@ -1,0 +1,12 @@
+button[type="submit"] {
+    background-color: #051622;
+    border: 2px solid #1BA098;
+    color: #fff;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding:  15px  50px 15px 50px ;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-top: 30px;
+  }

@@ -48,10 +48,10 @@ export class HomeAnnouncementsComponent implements OnInit {
     }
 
     //if the user posted a new announcement in create-announcement, it should be retrieved from the announcement service
-    const newAnnouncement = this.announcementService.getAnnouncementToPost();
-    if (newAnnouncement) {
-      this.allAnnouncements.push(newAnnouncement);
-    }
+    // const newAnnouncement = this.announcementService.getAnnouncementToPost(); //not necessary because we just add to the announcements for the company
+    // if (newAnnouncement) {
+    //   this.allAnnouncements.push(newAnnouncement);
+    // }
   }
 
 

@@ -1,7 +1,7 @@
 <div class="menu">
     <button  routerLink="/home-announcements">Home</button>
-    <button  *ngIf="currentUser?.isAdmin" routerLink="/teams">Teams</button>
-    <button  *ngIf="currentUser?.isAdmin" routerLink="/users">Users</button>
-    <button  *ngIf="!currentUser?.isAdmin" routerLink="/projects">Projects</button>
+    <button  *ngIf="currentUser?.admin" routerLink="/teams">Teams</button>
+    <button  *ngIf="currentUser?.admin" routerLink="/users">Users</button>
+    <button  *ngIf="!currentUser?.admin" routerLink="/projects">Projects</button>
     <button  routerLink="/login">Logout</button>
   </div>
