@@ -47,7 +47,7 @@ export interface CompanyDto {
   users: [BasicUserDto]
 }
 
-const userUrl = 'http://localhost:3000/placeholder';
+const userUrl = 'http://localhost:3000/users';
 
 @Injectable({
   providedIn: 'root'
@@ -89,7 +89,7 @@ export class UserService {
   }
   
   async getAllUsers() {
-    let data = await this.http.get(userUrl);
+    let data = await fetch(userUrl).then(response => response.json());
     console.log(data);
     return data;
   }
