@@ -40,6 +40,7 @@ export class HomeAnnouncementsComponent implements OnInit {
             next: (announcements: AnnouncementDto[]) => {
               console.log("Announcement" + announcements);
               this.allAnnouncements = this.allAnnouncements.concat(announcements);
+              this.sortAnnouncementsByDate(); // Sort the announcements after adding them
               console.log("ALL ANNOUNCEMENTS BEFORE NEW", this.allAnnouncements);
             },
             error: (error) => {
@@ -63,9 +64,16 @@ export class HomeAnnouncementsComponent implements OnInit {
       // Handle any result or action after the dialog is closed
       if (result) {
         // console.log("RESULT FROM DIALOG (ANNOUNCEMENT)" + result)
-        this.allAnnouncements.push(result);
+        this.allAnnouncements.unshift(result); // Add the new announcement at the beginning
+        this.sortAnnouncementsByDate(); // Sort the announcements
         // console.log("ALL ANNOUNCEMENTS AFTER NEW" + this.allAnnouncements)
       }
+    });
+  }
+
+  sortAnnouncementsByDate() {
+    this.allAnnouncements.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
   }
 
