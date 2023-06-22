@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import CompanyDto from '../interface-models/CompanyDto';
 import FullUserDto from '../interface-models/FullUserDto';
+import ProjectDto from '../interface-models/ProjectDto';
 
 @Component({
   selector: 'app-projects',
@@ -13,7 +14,7 @@ import FullUserDto from '../interface-models/FullUserDto';
 })
 export class ProjectsDisplayComponent implements OnInit{
   teamName: string = '';
-  projects: any[] = [];
+  projects: ProjectDto[] | undefined = [];
   companyId: number | null = null;
   teamId: number | null = null;
   projectId: number | null = null;
@@ -34,26 +35,32 @@ export class ProjectsDisplayComponent implements OnInit{
   });
 
   constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,
-              private userService: UserService) {}
+              private userData: UserService) {}
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.teamId = Number(params['teamId']);
     });
     
-    this.company = this.userService.currentCompany;
+    this.user = this.userData.getUser();
 
-    this.companyId = this.company?.id ?? null;
+    // this.user ?? this.router.navigateByUrl('/lemonade')
 
-    this.user = this.userService.getUser();
+    if (!this.user?.admin) {    // user is a Worker
+      this.projects = this.userData.getUserProjects();
+    } else {
     
-    const selectedTeam = this.company?.teams.find(
-      (team) => team.id === this.teamId
-    );
-    if (selectedTeam) {
-      this.teamName = selectedTeam.name;
+      this.company = this.userData.currentCompany;
+      this.companyId = this.company?.id ?? null;
+
+      const selectedTeam = this.company?.teams.find(
+        (team) => team.id === this.teamId
+      );
+      if (selectedTeam) {
+        this.teamName = selectedTeam.name;
+      }
+      this.getTeamProjects();
     }
-    this.getTeamProjects();
   }
 
   getTeamProjects(): void {

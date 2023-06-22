@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import TeamDto from './interface-models/TeamDto';
+import ProjectDto from './interface-models/ProjectDto';
 
 
 export interface CredentialsDto {
@@ -99,7 +100,7 @@ export class UserService {
     return this.fullUser
   }
 
-  getBasicUser() : BasicUserDto | undefined {
+    getBasicUser() : BasicUserDto | undefined {
     return this.basicUser
   }
   
@@ -108,5 +109,15 @@ export class UserService {
     console.log(data);
     return data;
   }
-}
 
+  getUserProjects() : ProjectDto[] | undefined {
+    let userProjects: ProjectDto[] = [];
+    console.log('getUserProject user:', this.fullUser)
+    this.fullUser?.teams.forEach((team) => {
+      team.projects.forEach((project) => userProjects.push(project))        
+    });
+
+    return userProjects;
+  }
+  
+}
