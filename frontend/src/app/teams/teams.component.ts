@@ -12,7 +12,7 @@ export class TeamsComponent {
 
   teams: TeamDto[] = [];
 
-  constructor(private userService: UserService, protected modalService: ModalService) {}
+  constructor(public userService: UserService, protected modalService: ModalService) {}
 
   ngOnInit(): void {
     this.populateTeams();

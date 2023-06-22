@@ -124,4 +124,13 @@ button.mat-button {
     cursor: pointer;
 }
 
+.admin{
+    color: #F24E1E;
+    font-size: 14pt;
+    font-family: 'Mulish';
+    text-transform: uppercase;
+    margin-left: 50px;
+
+  }
+
 /* ---------page header with nav button ---------- */

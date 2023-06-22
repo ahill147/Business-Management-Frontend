@@ -12,7 +12,7 @@ export class UsersRegComponent {
   users: any;
   populated: boolean = false;
 
-  constructor(private userService: UserService, protected modalService: ModalService) {}
+  constructor(public userService: UserService, protected modalService: ModalService) {}
 
   ngOnInit(): void {
     this.populateUserTable();
