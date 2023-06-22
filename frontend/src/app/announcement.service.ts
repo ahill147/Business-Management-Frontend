@@ -18,7 +18,7 @@ export class AnnouncementService {
       email: '',
       phone: ''
     },
-    isAdmin: false,
+    admin: false,
     active: false,
     status: ''
   };

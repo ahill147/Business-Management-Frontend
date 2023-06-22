@@ -7,13 +7,17 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ProjectsDisplayComponent } from './projects-display/projects-display.component';
 import { UsersRegComponent } from './users-reg/users-reg.component';
 import { AddUserComponent } from './users-reg/add-user/add-user.component';
+import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 
 const routes: Routes = [
-  { path: '', component: UsersRegComponent },
+  { path: '', component: LoginComponent },
   { path: 'select-company', component: SelectCompanyComponent },
   { path: 'announcements', component: HomeAnnouncementsComponent },
   { path: 'nav', component: NavMenuComponent },
   { path: 'projects', component: ProjectsDisplayComponent },
+  { path: 'user-registry', component: UsersRegComponent },
+  { path: 'create-announcement', component: CreateAnnouncementComponent },
+
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

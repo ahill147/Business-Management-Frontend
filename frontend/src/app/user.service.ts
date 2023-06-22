@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import ProfileDto from './interface-models/ProfileDto';
-import BasicUserDto from './interface-models/BasicUserDto';
-import FullUserDto from './interface-models/FullUserDto';
-import CompanyDto from './interface-models/CompanyDto';
+import TeamDto from './interface-models/TeamDto';
 
 
 export interface CredentialsDto {
@@ -12,44 +9,44 @@ export interface CredentialsDto {
   password: string;
 }
 
-// export interface ProfileDto {
-//   firstname: string,
-//   lastname: string,
-//   email: string,
-//   phone: string
-// }
+export interface ProfileDto {
+  firstName: string,
+  lastName: string,
+  email: string,
+  phone: string
+}
 
 export interface UserRequestDto {
   credentials: CredentialsDto;
   profile: ProfileDto;
-  isAdmin: boolean;
+  admin: boolean;
 }
 
-// export interface BasicUserDto{
-//   id: number,
-//   profile: ProfileDto,
-//   isAdmin: boolean,
-//   active: boolean,
-//   status: string
-// }
+export interface BasicUserDto{
+  id: number,
+  profile: ProfileDto,
+  admin: boolean,
+  active: boolean,
+  status: string
+}
 
-// export interface FullUserDto {
-//     id: number,
-//     profile: ProfileDto,
-//     isAdmin: boolean,
-//     active: boolean,
-//     status: string,
-//     companies: [any],
-//     teams: [any]
-// }
+export interface FullUserDto {
+    id: number,
+    profile: ProfileDto,
+    admin: boolean,
+    active: boolean,
+    status: string,
+    companies: CompanyDto[],
+    teams: TeamDto[]
+}
 
-// export interface CompanyDto {
-//   id: number,
-//   name: string,
-//   description: string,
-//   teams: [any],
-//   users: [BasicUserDto]
-// }
+export interface CompanyDto {
+  id: number,
+  name: string,
+  description: string,
+  teams: TeamDto[],
+  users: BasicUserDto[]
+}
 
 const userUrl = 'http://localhost:3000/users';
 
@@ -83,6 +80,16 @@ export class UserService {
           password
         }
         console.log(this.fullUser)
+
+        this.basicUser = {
+          id: fullUser.id,
+          profile: fullUser.profile,
+          admin: fullUser.admin,
+          active: fullUser.active,
+          status: fullUser.status
+        };
+
+        console.log(this.basicUser)
       })
     )
     //should return a FullUserDto
@@ -90,6 +97,10 @@ export class UserService {
 
   getUser() : FullUserDto | undefined {
     return this.fullUser
+  }
+
+  getBasicUser() : BasicUserDto | undefined {
+    return this.basicUser
   }
   
   async getAllUsers() {

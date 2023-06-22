@@ -3,24 +3,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { FullUserDto } from '../user.service';
 
 
-interface ProfileDto {
-  firstname: string,
-  lastname: string,
-  email:string,
-  phone: string
-}
-
-interface FullUserDto {
-  id: number,
-  profile: ProfileDto,
-  isAdmin: boolean,
-  active: boolean,
-  status: string,
-  companies: [any],
-  teams: [any]
-}
 
 @Component({
   selector: 'app-login',
@@ -49,7 +34,7 @@ export class LoginComponent implements OnInit{
 
     this.userService.login(username, password).subscribe({
       next: (user: FullUserDto) => {
-        if (user.isAdmin) {
+        if (user.admin) {
           // Navigate to the select company = for admins
           this.router.navigate(['/select-company']);
 
@@ -64,5 +49,4 @@ export class LoginComponent implements OnInit{
     });
   }
 }
-
 

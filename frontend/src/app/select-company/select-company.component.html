@@ -1,13 +1,18 @@
-<div class = "select-company-container">
-<h2>Select Company</h2>
-<form [formGroup]="selectCompanyForm" (ngSubmit)="onSubmit()">
-    <select class = "select-element" formControlName = "selectCompany">
-        <option disabled selected value="">Pick an Option</option>
-        <option value = "fedex">FedEx</option>
-        <option value = "cooksys">CookSys</option>
-        <option value = "google">Google</option>
-    </select>
-  </form>
-  
-  <button type="submit" *ngIf="selectCompanyForm.get('selectCompany')?.value">Submit</button>
+<div class="select-company-container">
+    <h2>Select Company</h2>
+    <form [formGroup]="selectCompanyForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <select class="select-element" formControlName="selectCompany">
+                <option disabled selected value="">Pick an Option</option>
+                <option *ngFor="let company of userService.fullUser?.companies" [value]="company.name">{{ company.name }}</option>
+            </select>
+            <button type="submit" *ngIf="selectCompanyForm.get('selectCompany')?.value">Submit</button>
+        </div>
+    </form>
 </div>
+
+
+
+
+
+
