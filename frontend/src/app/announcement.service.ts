@@ -6,8 +6,6 @@ import BasicUserDto from './interface-models/BasicUserDto';
   providedIn: 'root'
 })
 
-
-
 export class AnnouncementService {
 
   author: BasicUserDto = { //initialize with default values
