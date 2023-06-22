@@ -6,5 +6,5 @@ export default interface CompanyDto {
   name: string;
   description: string;
   teams: TeamDto[];
-  employees: BasicUserDto[];
+  users: BasicUserDto[];
 }

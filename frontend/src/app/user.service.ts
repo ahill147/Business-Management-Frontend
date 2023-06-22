@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
+import ProfileDto from './interface-models/ProfileDto';
+import BasicUserDto from './interface-models/BasicUserDto';
+import FullUserDto from './interface-models/FullUserDto';
+import CompanyDto from './interface-models/CompanyDto';
 
 
 export interface CredentialsDto {
@@ -8,12 +12,12 @@ export interface CredentialsDto {
   password: string;
 }
 
-export interface ProfileDto {
-  firstname: string,
-  lastname: string,
-  email: string,
-  phone: string
-}
+// export interface ProfileDto {
+//   firstname: string,
+//   lastname: string,
+//   email: string,
+//   phone: string
+// }
 
 export interface UserRequestDto {
   credentials: CredentialsDto;
@@ -21,31 +25,31 @@ export interface UserRequestDto {
   isAdmin: boolean;
 }
 
-export interface BasicUserDto{
-  id: number,
-  profile: ProfileDto,
-  isAdmin: boolean,
-  active: boolean,
-  status: string
-}
+// export interface BasicUserDto{
+//   id: number,
+//   profile: ProfileDto,
+//   isAdmin: boolean,
+//   active: boolean,
+//   status: string
+// }
 
-export interface FullUserDto {
-    id: number,
-    profile: ProfileDto,
-    isAdmin: boolean,
-    active: boolean,
-    status: string,
-    companies: [any],
-    teams: [any]
-}
+// export interface FullUserDto {
+//     id: number,
+//     profile: ProfileDto,
+//     isAdmin: boolean,
+//     active: boolean,
+//     status: string,
+//     companies: [any],
+//     teams: [any]
+// }
 
-export interface CompanyDto {
-  id: number,
-  name: string,
-  description: string,
-  teams: [any],
-  users: [BasicUserDto]
-}
+// export interface CompanyDto {
+//   id: number,
+//   name: string,
+//   description: string,
+//   teams: [any],
+//   users: [BasicUserDto]
+// }
 
 const userUrl = 'http://localhost:3000/users';
 

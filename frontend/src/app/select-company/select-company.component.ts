@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { UserService, BasicUserDto } from '../user.service';
+import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import BasicUserDto from '../interface-models/BasicUserDto';
 
-interface CompanyDto {
-  id: number,
-  name: string,
-  description: string,
-  teams: [any],
-  users: [BasicUserDto]
-}
 
 @Component({
   selector: 'app-select-company',

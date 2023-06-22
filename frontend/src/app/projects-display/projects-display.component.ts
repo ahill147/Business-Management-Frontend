@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import CompanyDto from '../interface-models/CompanyDto';
-import UserDto from '../interface-models/FullUserDto';
+import FullUserDto from '../interface-models/FullUserDto';
 
 @Component({
   selector: 'app-projects',
@@ -17,8 +17,8 @@ export class ProjectsDisplayComponent implements OnInit{
   companyId: number | null = null;
   teamId: number | null = null;
   projectId: number | null = null;
-  company: CompanyDto | null = null;
-  user: UserDto | undefined = undefined;
+  company: CompanyDto | undefined = undefined;
+  user: FullUserDto | undefined = undefined;
   formMode: string = '';
 
   editProjectForm: FormGroup = new FormGroup({
@@ -40,11 +40,12 @@ export class ProjectsDisplayComponent implements OnInit{
     this.activatedRoute.queryParams.subscribe((params) => {
       this.teamId = Number(params['teamId']);
     });
-    // this.companyService.selectedCompany.subscribe((company) => {
-    //   this.company = company;
-    //   this.companyId = company?.id ?? null;
-    // });
-    // this.user = this.userService.getUser();
+    
+    this.company = this.userService.currentCompany;
+
+    this.companyId = this.company?.id ?? null;
+
+    this.user = this.userService.getUser();
     
     const selectedTeam = this.company?.teams.find(
       (team) => team.id === this.teamId
