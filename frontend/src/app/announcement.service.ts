@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AnnouncementDto } from './home-announcements/home-announcements.component';
-import { BasicUserDto } from './user.service';
+import BasicUserDto from './interface-models/BasicUserDto';
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 
 export class AnnouncementService {
 

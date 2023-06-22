@@ -1,3 +1,35 @@
+.announcement-page-header {
+  background-color: #051622;
+  height: 80px;
+  border-bottom: 2px solid #DEB992;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+#graphic {
+  width: 60px;
+  margin-left: 30px;
+}
+
+.announcement-page-header button {
+  background-color: #0B2D45;
+  text-align: center;
+  padding-bottom: 7px;
+  width: 60px;
+  height: 60px;
+  color: white;
+  border: #0B2D45;
+  margin-right: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.fill-space {
+  flex-grow: 1;
+}
+
 .projects-container {
   background-color: #051622;
   height: 100vh;

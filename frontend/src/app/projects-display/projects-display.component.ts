@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http'
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
-import Company from '../interface-models/CompanyDto';
-import User from '../interface-models/FullUserDto';
+import CompanyDto from '../interface-models/CompanyDto';
+import FullUserDto from '../interface-models/FullUserDto';
+import ProjectDto from '../interface-models/ProjectDto';
 
 @Component({
   selector: 'app-projects',
@@ -13,12 +14,12 @@ import User from '../interface-models/FullUserDto';
 })
 export class ProjectsDisplayComponent implements OnInit{
   teamName: string = '';
-  projects: any[] = [];
+  projects: ProjectDto[] | undefined = [];
   companyId: number | null = null;
   teamId: number | null = null;
   projectId: number | null = null;
-  company: Company | null = null;
-  user: User | undefined = undefined;
+  company: CompanyDto | undefined = undefined;
+  user: FullUserDto | undefined = undefined;
   formMode: string = '';
 
   editProjectForm: FormGroup = new FormGroup({
@@ -34,25 +35,32 @@ export class ProjectsDisplayComponent implements OnInit{
   });
 
   constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,
-              private userService: UserService) {}
+              private userData: UserService) {}
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.teamId = Number(params['teamId']);
     });
-    // this.companyService.selectedCompany.subscribe((company) => {
-    //   this.company = company;
-    //   this.companyId = company?.id ?? null;
-    // });
-    // this.user = this.userService.getUser();
     
-    const selectedTeam = this.company?.teams.find(
-      (team) => team.id === this.teamId
-    );
-    if (selectedTeam) {
-      this.teamName = selectedTeam.name;
+    this.user = this.userData.getUser();
+
+    // this.user ?? this.router.navigateByUrl('/lemonade')
+
+    if (!this.user?.admin) {    // user is a Worker
+      this.projects = this.userData.getUserProjects();
+    } else {
+    
+      this.company = this.userData.currentCompany;
+      this.companyId = this.company?.id ?? null;
+
+      const selectedTeam = this.company?.teams.find(
+        (team) => team.id === this.teamId
+      );
+      if (selectedTeam) {
+        this.teamName = selectedTeam.name;
+      }
+      this.getTeamProjects();
     }
-    this.getTeamProjects();
   }
 
   getTeamProjects(): void {
