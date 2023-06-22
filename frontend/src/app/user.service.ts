@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import TeamDto from './interface-models/TeamDto';
-
 
 export interface CredentialsDto {
   username: string;
@@ -14,6 +13,11 @@ export interface ProfileDto {
   lastName: string,
   email: string,
   phone: string
+}
+
+export interface UserCreateDto {
+  credentials: CredentialsDto;
+  user: UserRequestDto;
 }
 
 export interface UserRequestDto {
@@ -47,8 +51,6 @@ export interface CompanyDto {
   teams: TeamDto[],
   users: BasicUserDto[]
 }
-
-const userUrl = 'http://localhost:3000/users';
 
 @Injectable({
   providedIn: 'root'
@@ -103,10 +105,44 @@ export class UserService {
     return this.basicUser
   }
   
-  async getAllUsers() {
-    let data = await fetch(userUrl).then(response => response.json());
-    console.log(data);
-    return data;
+  getAllUsers(): Observable<FullUserDto[]>{
+    return this.http.get<FullUserDto[]>('http://localhost:8080/company/6/users')
   }
+
+  createUser(user: any): Observable<FullUserDto> {
+    const username = 'thisismycompany';
+    const password = 'getyourowncompany';
+
+    const userCredentials = {
+      username: user.email,
+      password: user.password
+    }
+    const userProfile = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      phone: null
+    }
+    const userRequestDto = {
+      credentials: userCredentials,
+      profile: userProfile,
+      admin: user.adminRole
+    }
+    const credentialsDto = {
+      username,
+      password
+    }
+    const userCreateDto = {
+      credentials: credentialsDto,
+      user: userRequestDto
+    }
+    console.log(userCreateDto);
+    return this.http.post<FullUserDto>('http://localhost:8080/users/6', userCreateDto);
+  }
+
+  getAllTeams(): Observable<TeamDto[]> {
+    return this.http.get<TeamDto[]>('http://localhost:8080/company/6/teams')
+  }
+
 }
 

@@ -19,9 +19,9 @@
     <tbody *ngIf="populated">
         <tr *ngFor="let user of users">
             <div class="user-data">
-                <td style="width: 150px">{{user.username}}</td>
-                <td style="width: 225px; text-decoration: underline;">{{user.email}}</td>
-                <td style="width: 150px">{{user.team}}</td>
+                <td style="width: 150px">{{user.profile.firstName}} {{user.profile.lastName }}</td>
+                <td style="width: 225px; text-decoration: underline;">{{user.profile.email}}</td>
+                <td style="width: 150px">{{user.teams[0].name}}</td>
                 <td style="width: 100px">{{user.active}}</td>
                 <td style="width: 100px">{{user.admin}}</td>
                 <td style="width: 100px; text-transform: uppercase;">{{user.status}}</td>
