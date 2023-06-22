@@ -1,4 +1,6 @@
-.announcement-header {
+@import '~typeface-mulish';
+
+.announcement-page-header {
     background-color: #051622;
     height: 80px;
     border-bottom: 2px solid #DEB992;
@@ -6,6 +8,77 @@
     align-items: center;
     justify-content: flex-end;
     padding: 10px;
+  }
+
+  .new-announcement-button{
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none;
+    text-align: center;
+    padding: 15px 15px 15px 15px;
+    width: 120px;
+    background-color: #1BA098;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.new-announcement-button:active{
+    background-color: #0c7b74;
+    color: rgb(206, 213, 220);
+
+}
+
+h1{
+    padding-bottom: 30px;
+    align-self: center;
+    text-align: center;
+    width: 500px;
+    color: #1BA098;
+    border-bottom: 1px solid #DEB992;
+    text-align: center;
+    font-size: 30pt;
+    font-family: 'Mulish';
+    font-weight: 300;
+    color: #1BA098,
+}
+
+
+
+
+h3{
+    font-size: 18pt;
+}
+
+.announcement-header {
+    display: flex;
+    height: 30px;
+    border-bottom: solid 1px;
+    border-color: #0B2D45;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .announcement-item {
+    background-color: #0B2D45;
+    color: white;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    padding: 50px;
+    border-radius: 10px;
+    width: 500px;
+    margin-bottom: 20px;
+  }
+
+  .date {
+    text-align: right;
+  }
+
+  .author{
+    text-align: left;
+    text-transform: capitalize;
   }
 
   .button {
@@ -31,15 +104,14 @@
   }
   
   .announcement-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background-color: #051622;
     padding: 20px;
     height: 100%;
   }
   
-  .announcement-item {
-    color: white;
-    margin-bottom: 20px;
-  }
   
   h3 {
     font-family: 'Mulish', sans-serif;

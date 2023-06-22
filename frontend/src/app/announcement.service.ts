@@ -13,8 +13,8 @@ export class AnnouncementService {
   author: BasicUserDto = { //initialize with default values
     id: 0,
     profile: {
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: ''
     },

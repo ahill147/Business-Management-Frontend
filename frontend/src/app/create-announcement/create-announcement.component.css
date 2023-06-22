@@ -1,12 +1,82 @@
-button[type="submit"] {
-    background-color: #051622;
-    border: 2px solid #1BA098;
+@import '~typeface-mulish';
+
+
+.submit {
+    background-color: #1BA098;
+    border: none;
     color: #fff;
     font-family: 'Mulish', sans-serif;
     font-size: 14px;
     text-transform: uppercase;
-    padding:  15px  50px 15px 50px ;
+    padding:  10px  40px 10px 40px ;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 5px;
     margin-top: 30px;
   }
+
+
+  h2 {
+    font-family: 'Mulish';
+    font-size: 20pt;
+    font-weight: 200;
+  }
+
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 20px;
+}
+
+form div label {
+    margin-bottom: 10px;
+    font-family: 'Mulish';
+}
+
+form div input[type="text"],
+form div textarea {
+    padding: 10px;
+    width: 100%;
+    background-color: #0B2D45;
+    color: #DEB992;
+    border: solid 1px #DEB992;
+    font-family: 'Mulish';
+}
+
+  
+  .cancel {
+    background-color: #80173a;
+    border: none;
+    color: #fff;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding:  10px  40px 10px 40px ;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 30px;
+  }
+
+
+  .create-announcement-container {
+    background-color: #0B2D45;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 550px;
+    color: #1BA098;
+  }
+

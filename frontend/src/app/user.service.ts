@@ -10,8 +10,8 @@ export interface CredentialsDto {
 }
 
 export interface ProfileDto {
-  firstname: string,
-  lastname: string,
+  firstName: string,
+  lastName: string,
   email: string,
   phone: string
 }
@@ -19,7 +19,7 @@ export interface ProfileDto {
 export interface UserRequestDto {
   credentials: CredentialsDto;
   profile: ProfileDto;
-  isAdmin: boolean;
+  admin: boolean;
 }
 
 export interface BasicUserDto{
