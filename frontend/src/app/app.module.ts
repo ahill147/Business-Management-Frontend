@@ -23,6 +23,8 @@ import { AnnouncementService } from './announcement.service';
 import { ModalService } from './modal.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TeamsComponent } from './teams/teams.component';
+import { TeamOverlayComponent } from './teams/team-overlay/team-overlay.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProjectsDisplayComponent,
     CreateAnnouncementComponent,
     ProjectListItemComponent,
+    TeamsComponent,
+    TeamOverlayComponent,
 
   ],
   imports: [

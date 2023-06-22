@@ -5,7 +5,7 @@
                 <img src="assets/closeIcon.png" alt="close button" class="close-image"/>
                 <button (click)="close()" class="close-button"></button>
             </div>
-            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="userForm">
                 <div class="first-last-form">
                     <input type="text" id="firstName" formControlName="firstName" required placeholder="first name" class="first-last-form">
                     <input type="text" id="lastName" formControlName="lastName" required placeholder="last name">

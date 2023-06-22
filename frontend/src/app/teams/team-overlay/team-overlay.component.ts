@@ -1,20 +1,28 @@
 import { Component, ElementRef, Input, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ModalService } from 'src/app/modal.service';
-import { FullUserDto, UserService } from 'src/app/user.service';
+import { UserService, FullUserDto } from 'src/app/user.service';
 
 @Component({
-  selector: 'jw-modal',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css'],
+  selector: 'app-team-overlay',
+  templateUrl: './team-overlay.component.html',
+  styleUrls: ['./team-overlay.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AddUserComponent {
+export class TeamOverlayComponent {
   @Input() id?: string;
   isOpen = false;
   private element: any;
 
+  memberList: any;
+
   isSubmitted = false;
+
+  teamForm = this.formBuilder.group({
+    teamName: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+    members: ['', [Validators.required]],
+  });
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private modalService: ModalService, private el: ElementRef) {
     this.element = el.nativeElement;
@@ -33,11 +41,13 @@ export class AddUserComponent {
             this.close();
         }
     });
+
+    this.populateMembers()
   }
 
   ngOnDestroy() {
     this.isSubmitted = false;
-    this.userForm.reset();
+    this.teamForm.reset();
     // remove self from modal service
     this.modalService.remove(this);
 
@@ -46,7 +56,7 @@ export class AddUserComponent {
   }
 
   open() {
-    this.adminRole?.setValue("");
+    this.members?.setValue("");
     this.element.style.display = 'block';
     document.body.classList.add('jw-modal-open');
     this.isOpen = true;
@@ -54,65 +64,45 @@ export class AddUserComponent {
 
   close() {
     this.isSubmitted = false;
-    this.userForm.reset();
+    this.teamForm.reset();
 
     this.element.style.display = 'none';
     document.body.classList.remove('jw-modal-open');
     this.isOpen = false;
   }
 
-  userForm = this.formBuilder.group({
-    firstName: ['', [Validators.required]],
-    lastName: ['', [Validators.required]],
-    email: ['', [Validators.required]],
-    password: ['', [Validators.required]],
-    confirmPassword: ['', [Validators.required]],
-    adminRole: ['', [Validators.required]],
-  });
-
-  changeRole(e: any) {
-    this.adminRole?.setValue(e.target.value, {
+  changeMember(e: any) {
+    this.members?.setValue(e.target.value, {
       onlySelf: true,
     });
   }
 
-  get firstName() {
-    return this.userForm.get('firstName');
+  get teamName() {
+    return this.teamForm.get('teamName');
   }
-  get lastName() {
-    return this.userForm.get('lastName');
+  get description() {
+    return this.teamForm.get('description');
   }
-  get email() {
-    return this.userForm.get('email');
+  get members() {
+    return this.teamForm.get('members');
   }
-  get password() {
-    return this.userForm.get('password');
-  }
-  get confirmPassword() {
-    return this.userForm.get('confirmPassword');
-  }
-  get adminRole() {
-    return this.userForm.get('adminRole');
+
+  populateMembers() {
+    this.userService.getAllUsers().subscribe(
+      (memberList: FullUserDto[]) => {
+        this.memberList = memberList;
+      }
+    )
   }
 
   onSubmit(): void {
 
     this.isSubmitted = true;
-    if(!this.userForm.valid) {
+    if(!this.teamForm.valid) {
       false;
     } else {
-      //console.log(JSON.stringify(this.userForm.value));
-      this.userService.createUser(this.userForm.value).subscribe(
-        (user: FullUserDto) => {
-          console.log(user);
-          this.close();
-        },
-        (error: any) => {
-          console.error('Error retrieving user data:', error);
-          this.close();
-        }
-      )
-      // const query = this.userService.createUser(this.userForm.value);
+      //console.log(JSON.stringify(this.teamForm.value));
+      // const query = this.userService.createUser(this.teamForm.value);
       // if (query) {
       //   console.log("User successfully added");
       // } else {
