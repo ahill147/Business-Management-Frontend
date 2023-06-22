@@ -44,7 +44,11 @@ export class LoginComponent implements OnInit{
         }
       },
       error: (error) => {
-        // Handle login error if necessary
+        if (error.status === 401 || error.status === 404) {
+          this.loginForm.setErrors({ invalidCredentials: true });
+        } else {
+          console.log(error)
+        }
       }
     });
   }
