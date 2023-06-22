@@ -3,9 +3,9 @@ import { AddUserComponent } from './users-reg/add-user/add-user.component';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
-    private modals: AddUserComponent[] = [];
+    private modals: any[] = [];
 
-    add(modal: AddUserComponent) {
+    add(modal: any) {
         // ensure component has a unique id attribute
         if (!modal.id || this.modals.find(x => x.id === modal.id)) {
             throw new Error('modal must have a unique id attribute');
@@ -15,7 +15,7 @@ export class ModalService {
         this.modals.push(modal);
     }
 
-    remove(modal: AddUserComponent) {
+    remove(modal: any) {
         // remove modal from array of active modals
         this.modals = this.modals.filter(x => x === modal);
     }

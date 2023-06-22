@@ -1,19 +1,18 @@
-<div class="project-item">
+<div class="project-item" [attr.id]="itemId">
   <div class="name-row">
     <div class="project-name">
-      <p>Project 1</p>
+      <p>{{ project.name }}</p>
     </div>
     <div class="project-updated">
       <p>Last edited X days ago</p>
     </div>
   </div>
-    <div class="summary-row">
-      <div class="project-summary">
-        <p>this is the first line of the body and may be sliced</p>
-      </div>
-      <div class="projects-edit">
-        <button>Edit</button>
-      </div>
+  <div class="summary-row">
+    <div class="project-summary">
+      <p>{{ project.summary }}</p>
     </div>
-  
+    <div class="projects-edit">
+      <button>Edit</button>
+    </div>
+  </div>  
 </div>

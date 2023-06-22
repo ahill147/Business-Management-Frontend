@@ -1,0 +1,127 @@
+h1 {
+    color: #1BA098;
+    text-align: center;
+    font-size: 48px;
+    line-height: 150%;
+}
+
+.teams-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-items {
+    display: grid;
+    grid-template-rows: 241px 241px;
+    grid-template-columns: 313px 313px 313px;
+    grid-gap: 101px;
+    /* align-items: center;
+    justify-content: center; */
+    /* margin: auto; */
+}
+
+.team-item {
+    /* width: 313px;
+    height: 241px; */
+    border-radius: 20px;
+    background: #0B2D45;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.45);
+    text-align: center;
+    display: block;
+}
+
+.team-header {
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #DEB992;
+    text-align: center;
+}
+
+.team-body {
+    display: grid;
+    grid-template-rows: 32px 32px;
+    grid-template-columns: 103px 103px;
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+.member {
+    width: 103px;
+    height: 32px;
+    color: #ffffff;
+    border-radius: 10px;
+    background: #1BA098;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-team-button {
+    width: 313px;
+    height: 241px;
+    border: 2px solid #DEB992;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.45);
+    background: none;
+    color: #DEB992;
+    cursor: pointer;
+}
+
+.button-plus {
+    font-size: 200px;
+}
+
+.button-text {
+    position: relative;
+    font-size: 20px;
+    bottom: 45px;
+}
+
+/* ---------page header with nav button ---------- */
+
+#graphic {
+    width: 60px;
+    margin-left: 30px;
+    float: left;
+}
+
+.announcement-page-header {
+    background-color: #051622;
+    height: 80px;
+    border-bottom: 2px solid #DEB992;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.fill-space {
+    flex-grow: 1;
+}
+
+button.mat-button {
+    background-color: #051622;
+    color: white;
+    font-family: 'Mulish', sans-serif;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #0B2D45;
+    text-align: center;
+    padding-bottom: 7px;
+    width: 60px;
+    height: 60px;
+    color: white;
+    border: #0B2D45;
+    margin-right: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* ---------page header with nav button ---------- */

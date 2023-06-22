@@ -1,0 +1,36 @@
+<!-- ------header with nav icon------- -->
+<div class="announcement-page-header">
+    <img id="graphic" src="assets/graphic.png" alt="Graphic Image">
+    <!-- <p *ngIf="currentUser?.admin" class="admin"> Acting as Admin</p> -->
+    <span class="fill-space"></span>
+    <button class="button" mat-icon-button routerLink="/nav">
+        <mat-icon style="font-size: 30px;">menu</mat-icon>
+    </button>
+</div>
+<!-- ------header with nav icon------- -->
+
+<div class="teams-container">
+    <h1>Teams</h1>
+
+    <div class="team-items">
+        <div *ngFor="let team of teams" class="team-item">
+            <div class="team-header">
+                <h4>{{team.name}}</h4>
+                <p># of Projects: 4</p>
+            </div>
+            <p style="color: #ffffff">Members</p>
+            <div class="team-body">
+                <div *ngFor="let member of team.teammates" class="member">
+                    <p>{{member.profile.firstName}} {{member.profile.lastName.slice(0,1)}}.</p>
+                </div>
+            </div>
+        </div>
+        <button class="new-team-button" (click)="modalService.open('team-modal')">
+            <div class="button-plus">+</div>
+            <div class="button-text">New Team</div>
+        </button>
+        <app-team-overlay id="team-modal">
+            <button (click)="modalService.close();">Close</button>
+        </app-team-overlay>
+    </div>
+</div>

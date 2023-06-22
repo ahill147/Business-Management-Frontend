@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../user.service';
+import { FullUserDto, UserService } from '../user.service';
 import { ModalService } from '../modal.service';
 
 @Component({
@@ -18,16 +18,26 @@ export class UsersRegComponent {
     this.populateUserTable();
   }
 
-  async populateUserTable() {
-    try {
-      const response = await this.userService.getAllUsers()
-      if (response) {
-        this.users = response.users;
+  populateUserTable() {
+    this.userService.getAllUsers().subscribe(
+      (users: FullUserDto[]) => {
+        this.users = users;
+        console.log(users);
         this.populated = true;
+      },
+      (error: any) => {
+        console.error('Error retrieving user data:', error);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    )
+    // try {
+    //   const response = await this.userService.getAllUsers()
+    //   if (response) {
+    //     this.users = response.users;
+    //     this.populated = true;
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   openModal(id: string) {

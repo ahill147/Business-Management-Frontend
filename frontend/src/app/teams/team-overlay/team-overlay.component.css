@@ -1,6 +1,6 @@
 /* MODAL STYLES
 -------------------------------*/
-jw-modal {
+app-team-overlay {
     /* modals are hidden by default */
     display: none;
 
@@ -11,7 +11,7 @@ jw-modal {
 
         /* z-index must be higher than .jw-modal-background */
         z-index: 1000;
-        
+
         /* enables scrolling for tall modals */
         padding: 40px;
         overflow: auto;
@@ -41,7 +41,7 @@ jw-modal {
         /* semi-transparent black  */
         background-color: #000;
         opacity: 0.75;
-        
+
         /* z-index must be below .jw-modal and above everything else  */
         z-index: 900;
     }
@@ -99,7 +99,7 @@ input {
 }
 
 .admin-select {
-    color:#005594;
+    color: #005594;
     border-radius: 5px;
     padding: 5px;
     padding-left: 10px;

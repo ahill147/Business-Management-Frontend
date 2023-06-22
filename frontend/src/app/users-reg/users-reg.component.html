@@ -1,3 +1,14 @@
+<!-- ------header with nav icon------- -->
+<div class="announcement-page-header">
+    <img id="graphic" src="assets/graphic.png" alt="Graphic Image">
+    <!-- <p *ngIf="currentUser?.admin" class="admin"> Acting as Admin</p> -->
+    <span class="fill-space"></span>
+    <button class="button" mat-icon-button routerLink="/nav">
+        <mat-icon style="font-size: 30px;">menu</mat-icon>
+    </button>
+</div>
+<!-- ------header with nav icon------- -->
+
 <div class="header">
     <h1>User Registry</h1>
 <p>A general view of all your members in your organization</p>
@@ -19,9 +30,9 @@
     <tbody *ngIf="populated">
         <tr *ngFor="let user of users">
             <div class="user-data">
-                <td style="width: 150px">{{user.username}}</td>
-                <td style="width: 225px; text-decoration: underline;">{{user.email}}</td>
-                <td style="width: 150px">{{user.team}}</td>
+                <td style="width: 150px">{{user.profile.firstName}} {{user.profile.lastName }}</td>
+                <td style="width: 225px; text-decoration: underline;">{{user.profile.email}}</td>
+                <td style="width: 150px">{{user.teams[0].name}}</td>
                 <td style="width: 100px">{{user.active}}</td>
                 <td style="width: 100px">{{user.admin}}</td>
                 <td style="width: 100px; text-transform: uppercase;">{{user.status}}</td>

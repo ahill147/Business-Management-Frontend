@@ -131,3 +131,12 @@ h3{
     font-family: 'Mulish', sans-serif;
     margin-top: 20px;
   }
+
+  .admin{
+    color: #F24E1E;
+    font-size: 14pt;
+    font-family: 'Mulish';
+    text-transform: uppercase;
+    margin-left: 50px;
+
+  }

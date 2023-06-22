@@ -1,5 +1,6 @@
 <div class="announcement-page-header">
     <img id="graphic" src="assets/graphic.png" alt="Graphic Image">
+    <p *ngIf="currentUser?.admin" class="admin"> Acting as Admin</p>
     <span class="fill-space"></span>
     <button class="button" mat-icon-button routerLink="/nav">
         <mat-icon style="font-size: 30px;">menu</mat-icon>

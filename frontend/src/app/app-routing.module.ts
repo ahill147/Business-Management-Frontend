@@ -8,6 +8,7 @@ import { ProjectsDisplayComponent } from './projects-display/projects-display.co
 import { UsersRegComponent } from './users-reg/users-reg.component';
 import { AddUserComponent } from './users-reg/add-user/add-user.component';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { TeamsComponent } from './teams/teams.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'projects', component: ProjectsDisplayComponent },
   { path: 'user-registry', component: UsersRegComponent },
   { path: 'create-announcement', component: CreateAnnouncementComponent },
+  { path: 'teams', component: TeamsComponent},
+
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
