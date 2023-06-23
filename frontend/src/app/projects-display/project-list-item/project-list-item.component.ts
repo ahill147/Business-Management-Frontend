@@ -17,7 +17,9 @@ export class ProjectListItemComponent {
   constructor(private router: Router, private projectData: ProjectService, private dialog: MatDialog) { }
 
   navigateToProject(itemId: string) {
-    
+    const selectedProject = this.project;
+    this.projectData.updateSelectedProject(selectedProject);
+
     this.router.navigateByUrl(`/projects/${itemId}`);
   }
 
