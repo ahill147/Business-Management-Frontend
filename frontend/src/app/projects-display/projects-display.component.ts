@@ -6,6 +6,8 @@ import { UserService } from '../user.service';
 import CompanyDto from '../interface-models/CompanyDto';
 import FullUserDto from '../interface-models/FullUserDto';
 import ProjectDto from '../interface-models/ProjectDto';
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectCreateComponent } from '../project-create/project-create.component';
 
 @Component({
   selector: 'app-projects',
@@ -35,7 +37,7 @@ export class ProjectsDisplayComponent implements OnInit{
   });
 
   constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,
-              private userData: UserService) {}
+              private userData: UserService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
@@ -53,6 +55,7 @@ export class ProjectsDisplayComponent implements OnInit{
     } else {
     
       this.company = this.userData.currentCompany;
+      console.log("currentCompany:", this.company)
       this.companyId = this.company?.id ?? null;
 
       const selectedTeam = this.userData.team;
@@ -61,6 +64,8 @@ export class ProjectsDisplayComponent implements OnInit{
       if (selectedTeam) {
         this.teamName = selectedTeam.name;
         this.teamId = selectedTeam.id;
+        // this.teamId = selectedTeam.id - 10;
+
       }
       this.getTeamProjects();
     }
@@ -81,40 +86,21 @@ export class ProjectsDisplayComponent implements OnInit{
     );
   }
 
-  createNewProject(project: any): void {
-    // const companyId = this.companyId;
-    const teamId = this.teamId;
+  openCreateProjectDialog(): void {
+    // this.projectData.updateSelectedProject(this.project);
 
-    const url = `http://localhost:8080/projects/${teamId}`;
-
-    this.http.post(url, project).subscribe(
-      (response) => {
-        console.log('Project created successfully:', response);
-        // hide();
-        this.getTeamProjects();
-      },
-      (error) => {
-        console.error('Error creating project:', error);
+    const dialogRef = this.dialog.open(ProjectCreateComponent);
+  
+    dialogRef.afterClosed().subscribe(result => {
+      // Handle any result or action after the dialog is closed
+      if (result) {
+        console.log("RESULT FROM DIALOG Project)" + result)
+        // this.allAnnouncements.unshift(result); // Add the new announcement at the beginning
+        // console.log("ALL ANNOUNCEMENTS AFTER NEW" + this.allAnnouncements)
       }
-    );
+      this.getTeamProjects()
+    });
   }
 
-  editProject(project: any): void {
-    const projectId = this.projectId;
-
-    const url = `http://localhost:8080/projects/${projectId}`;
-
-    this.http.patch(url, project).subscribe(
-      (response) => {
-        console.log('patch request');
-        console.log('Project updated successfully:', response);
-        // hide();
-        this.getTeamProjects();
-      },
-      (error) => {
-        console.error('Error updating project:', error);
-      }
-    );
-  }
 
 }
