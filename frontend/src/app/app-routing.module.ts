@@ -9,6 +9,7 @@ import { UsersRegComponent } from './users-reg/users-reg.component';
 import { AddUserComponent } from './users-reg/add-user/add-user.component';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { TeamsComponent } from './teams/teams.component';
+import { ProjectDetailComponent } from './projects-display/project-detail/project-detail.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'announcements', component: HomeAnnouncementsComponent },
   { path: 'nav', component: NavMenuComponent },
   { path: 'projects', component: ProjectsDisplayComponent },
+  { path: 'projects/:itemId', component: ProjectDetailComponent },
   { path: 'user-registry', component: UsersRegComponent },
   { path: 'create-announcement', component: CreateAnnouncementComponent },
   { path: 'teams', component: TeamsComponent},

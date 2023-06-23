@@ -48,6 +48,8 @@ export class ProjectsDisplayComponent implements OnInit{
 
     if (!this.user?.admin) {    // user is a Worker
       this.projects = this.userData.getUserProjects();
+
+      console.log("reset userData projects:", this.projects)
     } else {
     
       this.company = this.userData.currentCompany;
