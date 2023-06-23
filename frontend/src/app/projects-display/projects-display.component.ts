@@ -100,10 +100,10 @@ export class ProjectsDisplayComponent implements OnInit{
   }
 
   createNewProject(project: any): void {
-    const companyId = this.companyId;
+    // const companyId = this.companyId;
     const teamId = this.teamId;
 
-    const url = `http://localhost:8080/company/${companyId}/teams/${teamId}/projects`;
+    const url = `http://localhost:8080/projects/${teamId}`;
 
     this.http.post(url, project).subscribe(
       (response) => {
@@ -118,15 +118,13 @@ export class ProjectsDisplayComponent implements OnInit{
   }
 
   editProject(project: any): void {
-    const companyId = this.companyId;
-    const teamId = this.teamId;
     const projectId = this.projectId;
 
-    const url = `http://localhost:8080/company/${companyId}/teams/${teamId}/projects/${projectId}`;
+    const url = `http://localhost:8080/projects/${projectId}`;
 
     this.http.patch(url, project).subscribe(
       (response) => {
-        console.log('PATCH REQ');
+        console.log('patch request');
         console.log('Project updated successfully:', response);
         // hide();
         this.getTeamProjects();
