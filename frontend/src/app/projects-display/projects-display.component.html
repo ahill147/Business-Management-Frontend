@@ -16,7 +16,7 @@
       </ng-container>
     </div>
     <div class="projects-new">
-      <button>New</button>
+      <button mat-button (click)="openCreateProjectDialog()">New</button>
     </div>
     <app-project-list-item 
       *ngFor="let project of projects" 

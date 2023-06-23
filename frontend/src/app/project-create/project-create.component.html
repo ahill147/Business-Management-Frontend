@@ -1,0 +1,16 @@
+<div class="edit-project-container">
+  <h2>Add New Project</h2>
+  <form (submit)="onSubmit()">
+      <div>
+          <label for="title">Name:</label>
+          <input type="text" id="name" [(ngModel)]="projectName" name="name" required>
+      </div>
+
+      <div>
+          <label for="description">Description:</label>
+          <textarea id="description" [(ngModel)]="projectDescription" name="description" required></textarea>
+      </div>
+      <button class="submit"type="submit">Submit</button>
+      <button class="cancel" type="button" (click)="closeDialog()">Cancel</button>
+  </form>
+</div>

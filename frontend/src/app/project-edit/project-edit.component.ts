@@ -77,9 +77,4 @@ export class ProjectEditComponent {
         }
       });
     }
-
-
-
-
-
 }
