@@ -25,6 +25,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamOverlayComponent } from './teams/team-overlay/team-overlay.component';
+import { ProjectDetailComponent } from './projects-display/project-detail/project-detail.component';
+import { ProjectEditComponent } from './project-edit/project-edit.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { TeamOverlayComponent } from './teams/team-overlay/team-overlay.componen
     ProjectListItemComponent,
     TeamsComponent,
     TeamOverlayComponent,
+    ProjectDetailComponent,
+    ProjectEditComponent,
 
   ],
   imports: [

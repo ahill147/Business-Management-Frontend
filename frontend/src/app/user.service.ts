@@ -66,7 +66,9 @@ export class UserService {
   fullUser: FullUserDto | undefined;
   team: TeamDto | undefined;
 
-  currentCompany!: CompanyDto; 
+  currentCompany!: CompanyDto;
+
+  userProjects: any[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -146,14 +148,31 @@ export class UserService {
     return this.http.get<TeamDto[]>(`http://localhost:8080/company/6/teams`);
   }
 
-  getUserProjects() : ProjectDto[] | undefined {
-    let userProjects: ProjectDto[] = [];
+  getUserProjects() : any {
+    let projectsArray: ProjectDto[] = [];
     console.log('getUserProject user:', this.fullUser)
     this.fullUser?.teams.forEach((team) => {
-      team.projects.forEach((project) => userProjects.push(project))        
+      team.projects.forEach((project) => projectsArray.push(project))        
     });
 
-    return userProjects;
+    this.userProjects = projectsArray;
+    return projectsArray;
+  }
+
+  compileUserProjects() : any {
+    let projectsArray: ProjectDto[] = [];
+    console.log('getUserProject user:', this.fullUser)
+    this.fullUser?.teams.forEach((team) => {
+      team.projects.forEach((project) => projectsArray.push(project))        
+    });
+
+    this.userProjects = projectsArray;
+  }
+  
+  editFullUserProjects(projectToEdit: any) {
+    let userProjects: any = this.getUserProjects();
+    userProjects.filter((project: { id: any; }) => project.id != projectToEdit.id);
+    this.userProjects = [projectToEdit, ...userProjects];
   }
   
 }
