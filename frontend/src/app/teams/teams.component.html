@@ -13,7 +13,7 @@
     <h1>Teams</h1>
 
     <div class="team-items">
-        <div *ngFor="let team of teams" class="team-item">
+        <div *ngFor="let team of teams" class="team-item" (click)="onTeamSelection(team)">
             <div class="team-header">
                 <h4>{{team.name}}</h4>
                 <p># of Projects: 4</p>
