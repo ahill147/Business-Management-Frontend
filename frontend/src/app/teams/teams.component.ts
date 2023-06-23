@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class TeamsComponent {
 
   teams: TeamDto[] = [];
+  teamsRetrieved: boolean = false;
 
   constructor(public userService: UserService, protected modalService: ModalService, private router: Router) {}
 
@@ -23,7 +24,7 @@ export class TeamsComponent {
     this.userService.getAllTeams().subscribe(
       (teams: TeamDto[]) => {
         this.teams = teams;
-        console.log(teams);
+        this.teamsRetrieved = true;
       },
       (error: any) => {
         console.error('Error retrieving team data:', error);
@@ -33,7 +34,7 @@ export class TeamsComponent {
 
   onTeamSelection(team: TeamDto) {
     this.userService.team = team;
-    console.log('selection pushed');
+    console.log(team);
     this.router.navigate(['/projects']);
   }
 

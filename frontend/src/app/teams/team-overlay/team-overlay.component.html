@@ -17,8 +17,8 @@
                         Select Members
                     </p>
                     <select class="member-select" (change)="changeMember($event)" formControlName="members" placeholder="Pick an Option">
-                        <option hidden value="" disabled selected>Pick an Option</option>
-                        <option *ngFor="let member of memberList" value="member">
+                        <option value="" disabled selected>Pick an Option</option>
+                        <option *ngFor="let member of memberList" value={{member.id}}>
                             {{member.profile.firstName}}
                         </option>
                     </select>
@@ -27,6 +27,13 @@
                     <p style="color: #bc0000;">Some fields are missing inputs or have invalid inputs.</p>
                 </div>
                 <br>
+                <div class="members-grid">
+                    <div *ngFor="let member of addedMembers" class="member">
+                        <div class="member-text"><p>{{ member.profile.firstName }} {{member.profile.lastName.slice(0,1) }}.</p></div>
+                        <img src="assets/closeIcon.png" alt="close button" class="close-member-image"/>
+                        <button (click)="removeMember(member)" class="close-member-button"></button>
+                    </div>
+                </div>
                 <br>
                 <br>
                 <button type="submit" class="submit-button" (click)="onSubmit()">Submit</button>
