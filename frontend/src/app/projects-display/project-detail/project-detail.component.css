@@ -1,0 +1,65 @@
+.announcement-page-header {
+  background-color: #051622;
+  height: 80px;
+  border-bottom: 2px solid #DEB992;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+#graphic {
+  width: 60px;
+  margin-left: 30px;
+}
+
+.announcement-page-header button {
+  background-color: #0B2D45;
+  text-align: center;
+  padding-bottom: 7px;
+  width: 60px;
+  height: 60px;
+  color: white;
+  border: #0B2D45;
+  margin-right: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.fill-space {
+  flex-grow: 1;
+}
+
+.projects-container {
+  background-color: #051622;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-heading {
+  left: 33%;
+  right: 33%;
+  top: 8%;
+  bottom: 79%;
+
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 150%;
+  /* identical to box height, or 72px */
+
+  text-align: center;
+  color: #1BA098;
+}
+
+.project-detail {
+  background-color: #0B2D45;
+  width: 50vw;
+  height: 50vh;
+  top: 367px;
+  border-radius: 20px;  
+}

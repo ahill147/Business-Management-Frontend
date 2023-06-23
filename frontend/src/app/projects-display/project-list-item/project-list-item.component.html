@@ -1,7 +1,9 @@
 <div class="project-item" [attr.id]="itemId">
   <div class="name-row">
     <div class="project-name">
-      <p>{{ project.name }}</p>
+      <a [routerLink]="['/projects', itemId]" (click)="navigateToProject(itemId)">
+        <p>{{ project.name }}</p>
+      </a>
     </div>
     <div class="project-updated">
       <p>Last edited X days ago</p>
