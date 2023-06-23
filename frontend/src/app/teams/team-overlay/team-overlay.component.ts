@@ -12,7 +12,7 @@ import { UserService, FullUserDto, ProfileDto } from 'src/app/user.service';
   encapsulation: ViewEncapsulation.None
 })
 export class TeamOverlayComponent {
-  @Output() event = new EventEmitter();
+  @Output() event = new EventEmitter<string>();
   @Input() id?: string;
   isOpen = false;
   private element: any;
@@ -50,6 +50,8 @@ export class TeamOverlayComponent {
   }
 
   ngOnDestroy() {
+
+    this.event.emit();
     this.isSubmitted = false;
     this.teamForm.reset();
     // remove self from modal service
@@ -69,6 +71,7 @@ export class TeamOverlayComponent {
   }
 
   close() {
+    this.event.emit();
     this.isSubmitted = false;
     this.teamForm.reset();
     this.addedMembers = [];

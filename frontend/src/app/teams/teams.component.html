@@ -16,7 +16,7 @@
         <div *ngFor="let team of teams" class="team-item" (click)="onTeamSelection(team)">
             <div class="team-header">
                 <h4>{{team.name}}</h4>
-                <p># of Projects: 4</p>
+                <p># of Projects: {{team.teammates.length}}</p>
             </div>
             <p style="color: #ffffff">Members</p>
             <div class="team-body">
@@ -29,7 +29,7 @@
             <div class="button-plus">+</div>
             <div class="button-text">New Team</div>
         </button>
-        <app-team-overlay id="team-modal">
+        <app-team-overlay id="team-modal" (event)="populateTeams()">
         </app-team-overlay>
     </div>
 </div>
