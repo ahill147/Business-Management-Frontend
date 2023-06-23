@@ -18,7 +18,7 @@ app-team-overlay {
 
         .jw-modal-body {
             width: 600px;
-            height: 500px;
+            min-height: 500px;
             padding: 20px;
             background: #0B2D45;
             text-align: center;
@@ -78,6 +78,25 @@ body.jw-modal-open {
     border: none;
 }
 
+.close-member-image {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    bottom: 32px;
+    left: 83px;
+}
+
+.close-member-button {
+    position: relative;
+    background: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: none;
+    bottom: 32px;
+    left: 52px;
+}
+
 input {
     color: #DEB992;
     background: none;
@@ -98,13 +117,34 @@ input {
     cursor: pointer;
 }
 
-.admin-select {
+.member-select {
     color: #005594;
     border-radius: 5px;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
     font-weight: bold;
+}
+
+.members-grid {
+    display: grid;
+    justify-content: center;
+    grid-gap: 18px;
+}
+
+.member {
+    height: 32px;
+}
+
+.member-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 103px;
+    height: 32px;
+    background-color: #1BA098;
+    color: #ffffff;
+    border-radius: 5px;
 }
 
 option {

@@ -174,5 +174,21 @@ export class UserService {
     userProjects.filter((project: { id: any; }) => project.id != projectToEdit.id);
     this.userProjects = [projectToEdit, ...userProjects];
   }
+
+  createTeam(team: any): Observable<TeamDto> {
+    const credentialsDto = {
+      username: 'thisismycompany',
+      password: 'getyourowncompany'
+    }
+    const teamRequestDto = {
+      credentials: credentialsDto,
+      name: team.teamName,
+      description: team.description,
+      teammates: JSON.parse(team.members)
+    }
+    console.log(teamRequestDto);
+    return this.http.post<any>(`http://localhost:8080/team/6`, teamRequestDto);
+    // return this.http.post<any>(`http://localhost:8080/team/${this.currentCompany.id}`, teamRequestDto);
+  }
   
 }
