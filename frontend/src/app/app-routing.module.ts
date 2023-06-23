@@ -9,16 +9,17 @@ import { UsersRegComponent } from './users-reg/users-reg.component';
 import { AddUserComponent } from './users-reg/add-user/add-user.component';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { TeamsComponent } from './teams/teams.component';
+import { AdminGuard } from './admin-guard.service';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'select-company', component: SelectCompanyComponent },
+  { path: 'select-company', component: SelectCompanyComponent, canActivate: [AdminGuard]  },
   { path: 'announcements', component: HomeAnnouncementsComponent },
   { path: 'nav', component: NavMenuComponent },
   { path: 'projects', component: ProjectsDisplayComponent },
-  { path: 'user-registry', component: UsersRegComponent },
-  { path: 'create-announcement', component: CreateAnnouncementComponent },
-  { path: 'teams', component: TeamsComponent},
+  { path: 'user-registry', component: UsersRegComponent, canActivate: [AdminGuard]  },
+  { path: 'create-announcement', component: CreateAnnouncementComponent, canActivate: [AdminGuard]  },
+  { path: 'teams', component: TeamsComponent, canActivate: [AdminGuard] },
 
 
   { path: '**', redirectTo: '', pathMatch: 'full' }

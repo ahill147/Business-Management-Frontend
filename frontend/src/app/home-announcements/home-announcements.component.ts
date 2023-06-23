@@ -65,16 +65,42 @@ export class HomeAnnouncementsComponent implements OnInit {
       if (result) {
         // console.log("RESULT FROM DIALOG (ANNOUNCEMENT)" + result)
         this.allAnnouncements.unshift(result); // Add the new announcement at the beginning
+        this.allAnnouncements = [...this.allAnnouncements]; // Update the reference of the array to trigger change detection and update the view
         this.sortAnnouncementsByDate(); // Sort the announcements
+        this.getAllAnnouncementsForCurrentUser(); // Fetch the updated list of announcements
         // console.log("ALL ANNOUNCEMENTS AFTER NEW" + this.allAnnouncements)
       }
     });
   }
 
   sortAnnouncementsByDate() {
+
+    this.currentUser = this.userService.getUser();
+
+    //need to get announcements for each of the company ids and add them to our allAnnouncements array
+
     this.allAnnouncements.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
   }
 
+  getAllAnnouncementsForCurrentUser() {
+    this.allAnnouncements = []; // Clear the existing announcements
+  
+    if (this.currentUser?.companies) {
+      this.currentUser.companies.forEach((company: any) => {
+        this.getAllAnnouncements(company.id)
+          .subscribe({
+            next: (announcements: AnnouncementDto[]) => {
+              this.allAnnouncements = this.allAnnouncements.concat(announcements);
+              this.sortAnnouncementsByDate(); // Sort the announcements by date
+            },
+            error: (error) => {
+              // Handle error
+            }
+          });
+      });
+    
+    }
+  }
 }
