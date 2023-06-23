@@ -64,6 +64,7 @@ export class UserService {
   userRequest: UserRequestDto | undefined;
   basicUser: BasicUserDto | undefined;
   fullUser: FullUserDto | undefined;
+  team: TeamDto | undefined;
 
   currentCompany!: CompanyDto;
 
@@ -109,13 +110,12 @@ export class UserService {
   }
   
   getAllUsers(): Observable<FullUserDto[]>{
-    return this.http.get<FullUserDto[]>('http://localhost:8080/company/6/users')
+    // const companyId = this.currentCompany.id;
+    // return this.http.get<FullUserDto[]>(`http://localhost:8080/company/${companyId}/users`);
+    return this.http.get<FullUserDto[]>(`http://localhost:8080/company/6/users`)
   }
 
   createUser(user: any): Observable<FullUserDto> {
-    const username = 'thisismycompany';
-    const password = 'getyourowncompany';
-
     const userCredentials = {
       username: user.email,
       password: user.password
@@ -132,19 +132,20 @@ export class UserService {
       admin: user.adminRole
     }
     const credentialsDto = {
-      username,
-      password
+      username: this.credentials.username,
+      password: this.credentials.password
     }
     const userCreateDto = {
       credentials: credentialsDto,
       user: userRequestDto
     }
     console.log(userCreateDto);
-    return this.http.post<FullUserDto>('http://localhost:8080/users/6', userCreateDto);
+    return this.http.post<FullUserDto>(`http://localhost:8080/users/${this.currentCompany.id}`, userCreateDto);
   }
 
   getAllTeams(): Observable<TeamDto[]> {
-    return this.http.get<TeamDto[]>('http://localhost:8080/company/6/teams')
+    // return this.http.get<TeamDto[]>(`http://localhost:8080/company/${this.currentCompany.id}/teams`);
+    return this.http.get<TeamDto[]>(`http://localhost:8080/company/6/teams`);
   }
 
   getUserProjects() : any {

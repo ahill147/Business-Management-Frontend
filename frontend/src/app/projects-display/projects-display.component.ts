@@ -44,7 +44,7 @@ export class ProjectsDisplayComponent implements OnInit{
     
     this.user = this.userData.getUser();
 
-    // this.user ?? this.router.navigateByUrl('/lemonade')
+    // this.user ?? this.router.navigateByUrl('/')
 
     if (!this.user?.admin) {    // user is a Worker
       this.projects = this.userData.getUserProjects();
@@ -55,11 +55,12 @@ export class ProjectsDisplayComponent implements OnInit{
       this.company = this.userData.currentCompany;
       this.companyId = this.company?.id ?? null;
 
-      const selectedTeam = this.company?.teams.find(
-        (team) => team.id === this.teamId
-      );
+      const selectedTeam = this.userData.team;
+      console.log('selectedTeam', selectedTeam)
+      
       if (selectedTeam) {
         this.teamName = selectedTeam.name;
+        this.teamId = selectedTeam.id;
       }
       this.getTeamProjects();
     }
@@ -78,27 +79,6 @@ export class ProjectsDisplayComponent implements OnInit{
         console.error('Error fetching projects:', error);
       }
     );
-  }
-
-  projectFormSubmit(): void {
-    if (this.editProjectForm.valid) {
-      const formData = {
-        name: this.editProjectForm.get('name')?.value,
-        description: this.editProjectForm.get('description')?.value,
-        active:
-          this.formMode === 'edit'
-            ? this.editProjectForm.get('active')?.value
-            : true,
-      };
-      console.log('FORM SUBMIT', formData);
-      if (this.formMode === 'edit') {
-        this.editProject(formData);
-      }
-
-      if (this.formMode === 'new') {
-        this.createNewProject(formData);
-      }
-    }
   }
 
   createNewProject(project: any): void {
